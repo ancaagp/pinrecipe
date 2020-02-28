@@ -1,82 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="../../public/scripts/recipes scripts/showRecipe.js"></script>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Recipe Show</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../public/scripts/recipes scripts/showRecipe.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/styles/recipe/showRecipe.css">
+    <title>Recipe Show</title>
+</head>
 
-    <body>
-        <header>
-            <div class="bg-dark collapse" id="navbarHeader">
-                <div class="container">
-                    <div class="row nav justify-content-end">
-                        <div class="col-sm-4 py-4">
-                            <h4 class="text-white nav justify-content-end mb-3">Profile</h4>
-                            <ul class="list-unstyled">
-                                <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a></li>
-                                <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
-                                <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
-                                <li class="nav-item nav justify-content-end mt-2"><a href="#" class="text-white font-weight-bold">Log Out</a></li>
+<body>
+    <!-- NAVIGATION -->
+    <header>
+        <div class="bg-dark collapse" id="navbarHeader">
+            <div class="container">
+                <div class="row nav justify-content-end">
+                    <div class="col-sm-4 py-4">
+                        <h4 class="text-white nav justify-content-end mb-3">Profile</h4>
+                        <ul class="list-unstyled">
+                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
+                            </li>
+                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
+                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
+                            <li class="nav-item nav justify-content-end mt-2"><a href="#"
+                                    class="text-white font-weight-bold">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2"
+                        viewBox="0 0 24 24" focusable="false">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                        </path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    <strong>Add New Recipe</strong>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                    data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- PHOTO OF THE FOOD -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-5">
+                    <div class="card">
+                        <img src="https://picsum.photos/200/200" class="card-img-top" alt="...">
+
+                        <!-- DETAILS -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Time: 40 min</li>
+                            <li class="list-group-item">Cal: 400</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- INGREDIENTS -->
+                <div class="col-md-6 mt-5">
+                    <div class="text-center">
+                        <h2>Ingredients</h2>
+                        <ul class="text-left">
+                            <li>Eggs</li>
+                            <li>Flour</li>
+                            <li>Honey</li>
+                        </ul>
+
+                        <!-- DESCRIPTION -->
+                        <h2 class="mt-5">Description</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Repellendus eius, dolorum facere iure commodi officia unde.
+                            Deserunt alias voluptates neque corrupti velit, sequi ut, nobis, quae rem labore adipisci
+                            similique!
+                        </p>
+
+                        <!-- LINK TO THE SOURCE -->
+                        <h2 class="mt-5">How to cook</h2>
+                        <a href="#">Some link</a>
+
+                        <!-- Reviews -->
+                        <div class="mt-5" id="reviews">
+                            <button type="button" class="btn btn-secondary " data-toggle="modal"
+                                data-target="#exampleModal" data-whatever="@mdo">Write a review</button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">New comment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class=" text-left mt-5">
+                                <li class="mb-2">I LOVE IT!</li>
+                                <li class="mb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas architecto eveniet quidem dicta officia laborum consectetur fugit repellendus ipsa, voluptates quam, praesentium aliquid quia minus eos nostrum enim, aut libero.</li>
+                                <li class="mb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas architecto eveniet quidem dicta officia laborum consectetur fugit repellendus ipsa, voluptates quam, praesentium aliquid quia minus eos nostrum enim, aut libero.</li>
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="navbar navbar-dark bg-dark shadow-sm">
-                <div class="container d-flex justify-content-between">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2"
-                            viewBox="0 0 24 24" focusable="false">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
-                            </path>
-                            <circle cx="12" cy="13" r="4"></circle>
-                        </svg>
-                        <strong>Add New Recipe</strong>
-                    </a>
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                        data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-        </header>
-
-
-        <!-- BOOTSTRAP JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-        <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-            crossorigin="anonymous"></script>
-
-    </body>
+        </div>
+        </div>
 
 
 
 
 
-    <!-- Bootstrap JS -->
+    </main>
+    <!-- BOOTSTRAP JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    </body>
+
+</body>
+
+
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>
