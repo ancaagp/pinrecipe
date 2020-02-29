@@ -1,223 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinrecipe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinrecipe</title>
 
-    <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="../public/styles/main.css">
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="../public/styles/main.css">
 
-    <!-- CONNECT MAIN JS FILE -->
-    <script defer src="../public/scripts/main.js"></script>
+  <!-- CONNECT MAIN JS FILE -->
+  <script defer src="../public/scripts/main.js"></script>
 
 </head>
 
-    <!-- BOOTSTRAP ALBUM -->
-    <body>
-        <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
+<!-- BOOTSTRAP ALBUM -->
 
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white"></h4>
-              <p class="text-muted"></p>
-            </div>
-            
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
-              </ul>
-            </div>
+<body>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white"></h4>
+            <p class="text-muted"></p>
+          </div>
+
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
 
-            <!-- BUTTON ADD NEW RECIPE -->
-          <!-- <a href="#" class="navbar-brand d-flex align-items-center">
+        <!-- BUTTON ADD NEW RECIPE -->
+        <!-- <a href="#" class="navbar-brand d-flex align-items-center">
             <img id="addBtn" src="https://www.iconsdb.com/icons/preview/white/plus-xxl.png" width="20" height="20" ></img>
             <strong>Add new recipe</strong>
           </a> -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
-    </header>
-    
-    <main role="main">
+    </div>
+  </header>
+
+  <main role="main">
     <!-- HERO SECTION -->
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1>Pinrecipe</h1>
-          <p class="lead text-muted">Pinrecipe is your cookbook. Browse for yummy inspiration and add your own recipes.</p>
-          <p>
-            <a href="#" class="btn btn-secondary my-2">Add new recipe</a>
-          </p>
-        </div>
-      </section>
-    
-      <div class="album py-5 bg-light">
-        <div class="container">
-    
-          <div class="row">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1>Pinrecipe</h1>
+        <p class="lead text-muted">Pinrecipe is your cookbook. Browse for yummy inspiration and add your own recipes.
+        </p>
+        <p>
+          <a href="#" class="btn btn-secondary my-2">Add new recipe</a>
+        </p>
+      </div>
+    </section>
 
-            <!-- RECIPE CARD -->
-            <div class="col-md-3">
-              <div class="card mb-4 shadow-sm">
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                <div class="card-body">
-                  <p class="card-text">Creamy mushroom soup</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">350 Cal/ 50 mins</small>
+    <div class="album py-5 bg-light">
+      <div class="container">
 
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                    </div>
+        <div class="row">
 
+          <!-- RECIPE CARD -->
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-  
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-  
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-  
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-  
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-            <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-                      
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-                      
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
-                  <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-                  <div class="card-body">
-                    <p class="card-text">Creamy mushroom soup</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">350 Cal/ 50 mins</small>
-                      
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-                      </div>
-  
-                    </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
+              <div class="card-body">
+                <p class="card-text">Creamy mushroom soup</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">350 Cal/ 50 mins</small>
+
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                   </div>
+
                 </div>
               </div>
+            </div>
+          </div>
 
 
-            <!-- <div class="col-md-4">
+          <!-- <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                 <div class="card-body">
@@ -234,26 +247,38 @@
             </div> -->
 
 
-          </div>
         </div>
       </div>
-    
-    </main>
-    
-    <footer>
-        <p class="backTop" style="text-align: right;"> 
-          <a href="#" style="color: white;">Back to top</a>
-        </p>
-        <p class="copyright" style="text-align: left;">&copy; 2020 Pinrecipe</p>
-    </footer>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-          <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-    
-    
-    <!-- BOOTSTRAP JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    </body>
+  </main>
+
+  <footer>
+    <p class="backTop" style="text-align: right;">
+      <a href="#" style="color: white;">Back to top</a>
+    </p>
+    <p class="copyright" style="text-align: left;">&copy; 2020 Pinrecipe</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+    crossorigin="anonymous"></script>
+
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
