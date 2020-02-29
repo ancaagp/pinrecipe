@@ -1,0 +1,37 @@
+
+.addRecipe {
+    margin: 30px;
+}
+
+#addBtn {
+    margin-right: 10px;
+}
+
+img {
+    object-fit: cover;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.backTop {
+    margin: 10px 0 10px 50px;
+}
+
+.copyright {
+    margin: 10px 50px 10px 0;
+}
+
+.jumbotron {
+    padding: 20px;
+    margin: 0;
+}
+
+.my-2 {
+    background-color: #343a40;
+    border-color: #343a40;
+}
