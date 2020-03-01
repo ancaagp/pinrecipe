@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="../../public/scripts/recipes scripts/showRecipe.js"></script>
+
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- CUSTOM JS -->
+    <script defer src="../../public/scripts/recipes/showRecipe.js"></script>
+
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../../public/styles/recipe/showRecipe.css">
     <title>Recipe Show</title>
 </head>
@@ -22,7 +28,9 @@
             <div class="container">
                 <div class="row nav justify-content-end">
                     <div class="col-sm-4 py-4">
-                        <h4 class="text-white nav justify-content-end mb-3">Profile</h4>
+                        <h4 class="text-white nav justify-content-end mb-3">
+                            <a href="#" class="text-white">Profile</a>
+                        </h4>
                         <ul class="list-unstyled">
                             <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
                             </li>
@@ -59,8 +67,8 @@
                             <li class="list-group-item">Time: 40 min</li>
                             <li class="list-group-item">Cal: 400</li>
                             <li class="list-group-item">
-                                <i style="font-size:24px" class="fa">&#xf1e0;</i>
-                                Share this recipe with your friends
+                                <i id="popover" class="fa" data-toggle="popover" title="Copied!" data-content="Look! I found an AWESOME recipe! ...Link..." style="font-size:24px">&#xf1e0;</i>
+                                Share with friends
                             </li>
                         </ul>
                     </div>
@@ -153,15 +161,6 @@
     <footer>
         <p class="copyright">&copy; 2020 Pinrecipe</p>
     </footer>
-    <!-- BOOTSTRAP JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-    <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-        crossorigin="anonymous"></script>
-
 </body>
 
 <!-- Bootstrap JS -->
