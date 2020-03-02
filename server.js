@@ -100,7 +100,6 @@ app.get('/api/v1/reviews', (req, res) => {
 //     });
 // });
 
-// *******************************************************************************************************************************
 //POST new review
 app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
     db.Review.create(req.body, (err, newReview) => {
@@ -162,9 +161,6 @@ app.put('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
     });
 });
 
-// *******************************************************************************************************************************
-
-
 // DELETE a review by id
 app.delete('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
     db.Recipe.findById(req.params.recipeId, (err, foundRecipe) => {
@@ -188,7 +184,6 @@ app.delete('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
         });
     });
 });
-
 
 // ---------------------------------------------API USER ROUTES
 
