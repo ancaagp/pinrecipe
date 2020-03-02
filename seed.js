@@ -62,21 +62,39 @@ const recipes = [
     }
 ];
 
-
 db.Recipe.deleteMany({}, (err, result) => {
     if (err) {
         console.log(err);
         process.exit();
     }
     console.log(`Deleted ${result.deletedCount} recipes.`);
-    console.log("Creating new recipes.");
-    db.Recipe.create(recipes, (err, newRecipes) => {
+
+    console.log('Deleting all reviews');
+    db.Review.deleteMany({}, (err, result) => {
         if (err) {
             console.log(err);
             process.exit();
-        } 
-        console.log(`Created ${newRecipes.length} recipes.`);
-        process.exit();
+        };
+        console.log(`Deleted ${result.deletedCount} reviews.`);
+
+        db.User.deleteMany({}, (err, result) => {
+            if (err) {
+                console.log(err);
+                process.exit();
+            };
+            console.log(`Deleted ${result.deletedCount} users.`);
+
+
+            console.log("Creating new recipes.");
+            db.Recipe.create(recipes, (err, newRecipes) => {
+                if (err) {
+                    console.log(err);
+                    process.exit();
+                } 
+                console.log(`Created ${newRecipes.length} recipes.`);
+                process.exit();
+            });
+        });
     });
 });
   
