@@ -82,3 +82,4 @@ db.Recipe.deleteMany({}, (err, result) => {
         process.exit();
     });
 });
+  

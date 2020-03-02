@@ -10,10 +10,6 @@ const RecipeSchema = new Schema ({
     cookingTime: String,
     image: String,
     link: String,
-    reviews: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Review',
-    }]
 },
 {timestamps: true});
 
