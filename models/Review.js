@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
 
-//Require Recipe model for connecting with Review
-const Recipe = require('./Recipe')
 
 const ReviewSchema = new mongoose.Schema({
     body: {
         type: String,
         required: true,
     },
-    recipeId: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recipe'
+        ref: 'User',
     }
 }, { timestamps: true });
 
