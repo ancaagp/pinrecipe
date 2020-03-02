@@ -24,7 +24,6 @@ const recipes = [
         cookingTime: "1h 10min",
         image: "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj",
         link: "https://www.bbcgoodfood.com/recipes/creamy-mushroom-soup",
-        reviews: "",
     },
     {
         name: "Almond meal cookies",
@@ -44,7 +43,6 @@ const recipes = [
         cookingTime: "55min",
         image: "https://minimalistbaker.com/wp-content/uploads/2012/11/chewy-gluten-free-choc-chip-cookies.jpg",
         link: "https://minimalistbaker.com/coconut-chocolate-chip-almond-meal-cookies/",
-        reviews: "",
     },
     {
         name: "Eggs Benedict",
@@ -61,10 +59,8 @@ const recipes = [
         cookingTime: "25min",
         image: "https://www.simplyrecipes.com/wp-content/uploads/2010/04/eggs-benedict-vertical-a-1600-809x1024.jpg",
         link: "https://www.simplyrecipes.com/recipes/eggs_benedict/",
-        reviews: "",
     }
 ];
-
 
 db.Recipe.deleteMany({}, (err, result) => {
     if (err) {
@@ -72,14 +68,33 @@ db.Recipe.deleteMany({}, (err, result) => {
         process.exit();
     }
     console.log(`Deleted ${result.deletedCount} recipes.`);
-    console.log("Creating new recipes.");
-    db.Recipe.create(recipes, (err, newRecipes) => {
+
+    console.log('Deleting all reviews');
+    db.Review.deleteMany({}, (err, result) => {
         if (err) {
             console.log(err);
             process.exit();
-        } 
-        console.log(`Created ${newRecipes.length} recipes.`);
-        process.exit();
+        };
+        console.log(`Deleted ${result.deletedCount} reviews.`);
+
+        db.User.deleteMany({}, (err, result) => {
+            if (err) {
+                console.log(err);
+                process.exit();
+            };
+            console.log(`Deleted ${result.deletedCount} users.`);
+
+
+            console.log("Creating new recipes.");
+            db.Recipe.create(recipes, (err, newRecipes) => {
+                if (err) {
+                    console.log(err);
+                    process.exit();
+                } 
+                console.log(`Created ${newRecipes.length} recipes.`);
+                process.exit();
+            });
+        });
     });
 });
   
