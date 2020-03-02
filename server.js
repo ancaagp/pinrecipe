@@ -126,31 +126,38 @@ app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
 });
 
 // PUT a review by id
-app.put('/api/recipes/:recipeId/reviews/:reviewId', (req, res) => {
+app.put('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
+    // console.log(req.params.reviewId); - reviewId
+    
     db.Recipe.findById(req.params.recipeId, (err, foundRecipe) => {
         if (err) {
             return res.status(404).json({status: 404, error: 'Cannot find a recipe to update review.'});
         };
 
         const reviewToUpdate = foundRecipe.reviews.id(req.params.reviewId);
+        // console.log(reviewToUpdate);
+        
+
         if (!reviewToUpdate) {
             return res.status(404).json({status: 404, error: 'Cannot find a review to update.'});
         };
 
-        reviewToUpdate.update({_id: req.params.reviewId}, req.body);
+        reviewToUpdate.body = req.body.body;
 
         foundRecipe.save((err, savedRecipe) => {
             if (err) {
                 return res.status(404).json({status: 404, error: 'Cannot save a recipe with updated review.'});
             };
 
-            db.Review.findByIdAndDelete(req.params.reviewId, (err, deletedReview) => {
+            db.Review.findByIdAndUpdate(req.params.reviewId, (err, updatedReview) => {
                 if (err) {
                     return res.status(404).json({status: 404, error: 'Cannot save a recipe with updated review.'});
                 };
 
-                res.json(deletedReview);
+                res.json(updatedReview);
             });
+
+            res.json(savedRecipe);
         });
     });
 });
@@ -159,7 +166,7 @@ app.put('/api/recipes/:recipeId/reviews/:reviewId', (req, res) => {
 
 
 // DELETE a review by id
-app.delete('/api/v1/recipes:recipeId/reviews/:reviewId', (req, res) => {
+app.delete('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
     db.Recipe.findById(req.params.recipeId, (err, foundRecipe) => {
         if (err) return res.status(404).json({ status: 404, error: 'Cannot find a recipe to delete review' });
 
@@ -187,9 +194,17 @@ app.delete('/api/v1/recipes:recipeId/reviews/:reviewId', (req, res) => {
 
 //GET users index
 
+
 //GET user show
 
 //POST new user
+app.post('/api/v1/users/', (req, res) => {
+    db.User.create(req.body, (err, newUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot create a user' });
+
+        res.json(newUser);
+    });
+});
 
 // PUT a user by id
 
