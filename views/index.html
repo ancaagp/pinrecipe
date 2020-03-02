@@ -11,45 +11,121 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <!-- MAIN CSS -->
-  <link rel="stylesheet" href="../public/styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
 
   <!-- CONNECT MAIN JS FILE -->
-  <script defer src="../public/scripts/main.js"></script>
+  <script defer src="/scripts/main.js"></script>
 
 </head>
 
-<!-- BOOTSTRAP ALBUM -->
 
 <body>
-    <!-- NAVIGATION -->
-    <header>
-      <div class="bg-dark collapse" id="navbarHeader">
-          <div class="container">
-              <div class="row nav justify-content-end">
-                  <div class="col-sm-4 py-4">
-                      <h4 class="text-white nav justify-content-end mb-3">Profile</h4>
-                      <ul class="list-unstyled">
-                          <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
-                          </li>
-                          <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
-                          <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
-                          <li class="nav-item nav justify-content-end mt-2"><a href="#"
-                                  class="text-white font-weight-bold">Log Out</a></li>
-                      </ul>
-                  </div>
+
+  <!-- NAVIGATION MENU -->
+  <header>
+    <div class="bg-dark collapse" id="navbarHeader">
+        <div class="container">
+            <div class="row nav justify-content-end">
+                <div class="col-sm-4 py-4">
+                    <h4 class="text-white nav justify-content-end mb-3">Profile</h4>
+                    <ul class="list-unstyled">
+                        <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
+                        </li>
+                        <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
+                        <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
+                        <li class="nav-item nav justify-content-end mt-2"><a href="#"
+                                class="text-white font-weight-bold">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-end">
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+    <!-- BOOTSTRAP MODAL -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new recipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label>Recipe name:</label>
+                <input class="form-control col-form-label-sm" placeholder="Required">
               </div>
-          </div>
+              <div class="form-group">
+                <label >Description:</label>
+                <input class="form-control col-form-label-sm" placeholder="Required">
+              </div>
+              <div class="form-group">
+                <label>Ingredients:</label>
+                <input class="form-control col-form-label-sm" placeholder="Required">
+              </div>
+              <div class="form-group">
+                <label>Link to image:</label>
+                <input class="form-control col-form-label-sm" placeholder="Required">
+              </div>
+              <div class="form-group">
+                <label>Link to cooking steps:</label>
+                <input class="form-control col-form-label-sm" placeholder="Required">
+              </div>
+
+              <p>This recipe is perfect for:</p>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Breakfast</label>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Lunch</label>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Dinner</label>
+              </div>
+        </form>
       </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-          <div class="container d-flex justify-content-end">
-              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                  data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
-                  aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Add recipe</button>
       </div>
-  </header>
+    </div>
+  </div>
+</div>
+
+
+<!-- BOOTSTRAP ALBUM -->
+  <!-- <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white"></h4>
+            <p class="text-muted"></p>
+          </div>
+
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul> -->
 
   <main role="main">
     <!-- HERO SECTION -->
@@ -59,7 +135,9 @@
         <p class="lead text-muted">Pinrecipe is your cookbook. Browse for yummy inspiration and add your own recipes.
         </p>
         <p>
-          <a href="#" class="btn btn-secondary my-2">Add new recipe</a>
+        <!-- OLD BUTTON:  <a href="#" class="btn btn-secondary my-2">Add new recipe</a> -->
+        <!-- modal button -->
+        <button type="button" class="btn btn-secondary my-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Add new recipe</button>
         </p>
       </div>
     </section>
