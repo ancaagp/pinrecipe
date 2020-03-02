@@ -13,6 +13,6 @@ mongoose.connect(DB_URI, {
 
 //Export ALL models
 module.exports = {
-    // Recipe: require('./Recipe'),
+    Recipe: require('./Recipe'),
     Review: require('./Review'),
 };
