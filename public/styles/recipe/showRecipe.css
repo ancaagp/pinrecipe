@@ -32,5 +32,13 @@ footer {
 i {
     margin: 4px 5px;
 }
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
  
  
