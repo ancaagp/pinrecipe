@@ -1,6 +1,23 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    flex: 0 0 auto;
+}
 
 .addRecipe {
     margin: 30px;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 #addBtn {
@@ -12,18 +29,21 @@ img {
 }
 
 footer {
+    width: 100%;
+    flex: 0 0 auto;
     background-color: #343a40;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .backTop {
-    margin: 10px 0 10px 80px;
+    left: 0;
+    margin: 10px 30px 10px 80px;
 }
 
 .copyright {
-    margin: 10px 80px 10px 0;
+    margin: 10px 50px 10px 0;
 }
 
 .jumbotron {
@@ -34,4 +54,12 @@ footer {
 .my-2 {
     background-color: #343a40;
     border-color: #343a40;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
