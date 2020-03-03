@@ -1,4 +1,119 @@
-// console.log('Show Recipe Test')
+const API_BASE = '/api/v1';
+const photoPlaceholder = document.getElementById('photo');
+
+const recipeId = window.location.pathname.split('/')[2];
+const cookingTimePlaceholder = document.getElementById('time');
+const caloriesPlaceholder = document.getElementById('calories');
+const popoverPlaceholder = document.getElementById('popover');
+
+
+function getRecipe() {
+    fetch(`${API_BASE}/recipes/${recipeId}`)
+        .then((stream) => stream.json())
+        .then((res) => render(res))
+        .catch((err) => console.log(err))
+};
+
+getRecipe();
+
+function render(recipeObj) {
+    setPhotoColumn(recipeObj);
+    setIngredients(recipeObj.ingredients);
+    setDescription(recipeObj.description);
+    provideHowToCookLink(recipeObj.link);
+    renderReviews(recipeObj.reviews)
+}
+
+function setPhotoColumn(recipeObj) {
+    console.log(recipeObj);
+
+    photoPlaceholder.setAttribute('src', recipeObj.image);
+    cookingTimePlaceholder.textContent = `Time: ${recipeObj.cookingTime}`
+    caloriesPlaceholder.textContent = `Calories: ${recipeObj.calories}`
+    // popoverPlaceholder.data-content;
+    // console.log(popoverPlaceholder);  
+};
+
+function setIngredients(array) {
+    const ingredientsUl = document.getElementById('ingredients');
+
+    for (let i = 0; i < array.length; i += 1) {
+        let li = document.createElement('li');
+        li.textContent = array[i];
+        ingredientsUl.appendChild(li);
+    };
+};
+
+function setDescription(description) {
+    const descriptionPlaceholder = document.getElementById('description')
+    descriptionPlaceholder.textContent = description;
+};
+
+function provideHowToCookLink(strLink) {
+    const howToCook = document.getElementById('link');
+    howToCook.setAttribute('href', strLink);
+    howToCook.setAttribute('target', '_blank');
+};
+
+
+function renderReviews(reviewsArray) {
+    let reviewUl = document.getElementById('reviews');
+
+    console.log(`REVIEWS ${reviewUl.childNodes}`);
+    
+
+    for (let i = 0; i < reviewsArray.length; i += 1) {
+        let review = `
+        <li class="d-flex align-items-start m-4">
+            ${reviewsArray[i].body}
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-remove" style="color: red"></i>
+        </li>
+        `
+        reviewUl.insertAdjacentHTML('beforeend', review);
+    };
+};
+
+const reviewForm = document.getElementById('review-modal');
+reviewForm.addEventListener('submit', (event) => {
+    console.log(event);
+
+    event.preventDefault();
+
+    const body = document.getElementById('review-text');
+
+    if (body.value.length > 0) {
+        const newReview = { body: body.value };
+        // console.log(newReview);
+
+        fetch(`/api/v1/recipes/${recipeId}/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newReview)
+        })
+            .then((stream) => stream.json())
+            .then((res) => {
+                // console.log(res);
+                getRecipe();
+                $('#exampleModal').modal('hide')
+            });
+    };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Functionality of the modal Review
 $('#exampleModal').on('show.bs.modal', function (event) {
@@ -28,4 +143,5 @@ function copyToClipboard(str) {
     document.execCommand('copy');
     document.body.removeChild(el);
 };
+
 
