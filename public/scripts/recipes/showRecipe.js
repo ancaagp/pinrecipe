@@ -71,19 +71,31 @@ function provideHowToCookLink(strLink) {
 
 function renderReviews(reviewsArray) {
     let reviewUl = document.getElementById('reviewsUl');
-    while(reviewUl.childNodes.length) {
+    while (reviewUl.childNodes.length) {
         reviewUl.removeChild(reviewUl.childNodes[reviewUl.childNodes.length - 1]);
-    };    
+    };
 
     for (let i = 0; i < reviewsArray.length; i += 1) {
-        let review = `
-        <li class="d-flex align-items-start m-4">
-            <i class="fa fa-edit"></i>
-            ${reviewsArray[i].body}
-            <i class="fa fa-remove" style="color: red"></i>
-        </li>
-        `
-        reviewUl.insertAdjacentHTML('afterbegin', review);
+        let reviewLi = document.createElement('li');
+        let editIcon = document.createElement('i');
+        let deleteIcon = document.createElement('i');
+
+        reviewLi.setAttribute('class', 'd-flex align-items-start m-4');
+        reviewLi.setAttribute('id', reviewsArray[i]._id);
+
+        editIcon.setAttribute('class', 'fa fa-edit edit-review');
+        deleteIcon.setAttribute('class', 'fa fa-remove delete-review');
+        deleteIcon.setAttribute('style', 'color: red');
+
+        reviewLi.textContent = reviewsArray[i].body;
+
+        reviewLi.appendChild(editIcon);
+        editIcon.addEventListener('click', editReview);
+
+        reviewLi.appendChild(deleteIcon);
+        deleteIcon.addEventListener('click', deleteReview);
+
+        reviewUl.appendChild(reviewLi);
     };
 };
 
@@ -91,8 +103,6 @@ function renderReviews(reviewsArray) {
 
 const reviewForm = document.getElementById('review-modal');
 reviewForm.addEventListener('submit', (event) => {
-    console.log(event);
-
     event.preventDefault();
 
     const body = document.getElementById('review-text');
@@ -113,23 +123,77 @@ reviewForm.addEventListener('submit', (event) => {
             .then((res) => {
                 // console.log(res);
                 getRecipe();
-                $('#exampleModal').modal('hide')
+                $('#reviewModal').modal('hide')
             });
     };
 });
 
+
+//------------------------------------------------------------------------------------------------- EDIT REVIEW (MODAL)
+
+function editReview(event) {
+    if (event.target.classList.contains('edit-review')) {
+        const updateBody = document.getElementById('update-review-text');
+        updateBody.value = event.target.parentNode.textContent;
+
+        let reviewId = event.target.parentNode.id;
+        document.getElementById("update-review-modal-review-id").setAttribute("value", reviewId);
+
+        $('#updateReviewModal').modal('show');
+
+        
+    };
+};
+const updateForm = document.getElementById('update-review-modal');
+
+updateForm.addEventListener('submit', function (event) {
+    console.log('HERE');
+
+    event.preventDefault();
+    const updateBody = document.getElementById('update-review-text');
+    const reviewId = document.getElementById("update-review-modal-review-id").getAttribute("value")
+    let updatedReview = { body: updateBody.value };
+    console.log(updatedReview);
+
+    fetch(`/api/v1/recipes/${recipeId}/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedReview)
+    })
+        .then((stream) => stream.json())
+        .then((res) => {
+            // console.log(res);
+            getRecipe();
+            $('#updateReviewModal').modal('hide')
+        });
+
+});
+
+//------------------------------------------------------------------------------------------------- EDIT REVIEW (MODAL)
+
+
+function deleteReview(event) {
+    if (event.target.classList.contains('delete-review')) {
+        let reviewId = event.target.parentNode.id;
+
+        fetch(`/api/v1/recipes/${recipeId}/reviews/${reviewId}`, {
+            method: 'DELETE'
+        })
+            .then((stream) => console.log(stream))
+            .then((res) => {
+                console.log(res);
+                getRecipe();
+            })
+            .catch((err) => console.log(err));
+    };
+};
+
 //------------------------------------------------------------------------------------------------- OPEN REVIEW MODAL
 
 // Functionality of the modal Review
-$('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + recipient)
-    modal.find('.modal-body input').val(recipient)
-});
+$('#reviewModal').on('show.bs.modal');
 
 //------------------------------------------------------------------------------------------------- Show message "Share..." on click
 $('#popover').on('click', function () {
@@ -140,6 +204,7 @@ $('#popover').on('click', function () {
 });
 
 //------------------------------------------------------------------------------------------------- Automatically copy message to clipboard
+
 function copyToClipboard(str) {
     const el = document.createElement('textarea');
     el.value = str;
