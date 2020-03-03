@@ -185,16 +185,55 @@ app.delete('/api/v1/recipes:recipeId/reviews/:reviewId', (req, res) => {
 
 // ---------------------------------------------API USER ROUTES
 
-//GET users index
+// GET users index
 
-//GET user show
+app.get('/api/v1/users', (req, res) => {
+    db.User.find({}, (err, Users) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+       
+        res.json(Users);
+    });
+});
 
-//POST new user
+// GET user show
+
+app.get('/api/v1/users/:id', (req, res) => {
+    db.User.findById(req.params.id, (err, User) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+       
+        res.json(User);
+    })
+})
+
+// POST new user
+
+app.post('/api/v1/users', (req, res) => {
+    db.User.create(req.body, (err, newUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+       
+        res.json(newUser);
+    });
+});
 
 // PUT a user by id
 
+app.put('/api/v1/users/:id', (req, res) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+       
+        res.json(updatedUser);
+    });
+});
+
 // DELETE a user by id
 
+app.delete('/api/v1/users/:id', (req, res) => {
+    db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+       
+        res.json(deletedUser);
+    });
+});
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`));
