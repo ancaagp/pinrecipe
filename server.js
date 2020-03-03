@@ -29,6 +29,36 @@ app.get('/recipes/:recipeId', (req, res) => {
     });
 });
 
+app.get('/breakfast', (req, res) => {
+    res.sendFile('views/recipe/breakfast.html', {
+        root: __dirname
+    });
+});
+
+app.get('/lunch', (req, res) => {
+    res.sendFile('views/recipe/lunch.html', {
+        root: __dirname
+    });
+});
+
+app.get('/dinner', (req, res) => {
+    res.sendFile('views/recipe/dinner.html', {
+        root: __dirname
+    });
+});
+
+app.get('/dessert', (req, res) => {
+    res.sendFile('views/recipe/dessert.html', {
+        root: __dirname
+    });
+});
+
+app.get('/user/profile', (req, res) => {
+    res.sendFile('views/user/userProfile.html', {
+        root: __dirname
+    });
+});
+
 // -------------------- API RECIPE ROUTES
 
 // GET recipes index
