@@ -67,7 +67,9 @@
                             <li class="list-group-item" id="time"></li>
                             <li class="list-group-item" id="calories"></li>
                             <li class="list-group-item">
-                                <i id="popover" class="fa" data-toggle="popover" title="Copied!" data-content="Look! I found an AWESOME recipe! ...Link..." style="font-size:24px">&#xf1e0;</i>
+                                <i id="popover" class="fa" data-toggle="popover" title="Copied!"
+                                    data-content="Look! I found an AWESOME recipe! ...Link..."
+                                    style="font-size:24px">&#xf1e0;</i>
                                 Share with friends
                             </li>
                         </ul>
@@ -91,8 +93,11 @@
                         <!-- Reviews -->
                         <div class="mt-4" id="reviews">
                             <button type="button" class="btn btn-secondary " data-toggle="modal"
-                                data-target="#exampleModal" data-address="review">Write a review</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                data-target="#reviewModal" data-address="review">
+                                Write a review
+                            </button>
+
+                            <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -118,6 +123,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- MODAL FOR UPDATING REVIEW -->
+
+                            <div class="modal fade" id="updateReviewModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Update your review</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="update-review-modal">
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="update-review-text"></textarea>
+                                                    <input type="hidden" id="update-review-modal-review-id" name="reviewId" value=""> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button id="submit-changes" type="submit"
+                                                        class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <ul class="text-left mt-5" id="reviewsUl">
                             </ul>
                         </div>
