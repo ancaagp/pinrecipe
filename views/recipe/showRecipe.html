@@ -32,7 +32,7 @@
                             <a href="#" class="text-white">Profile</a>
                         </h4>
                         <ul class="list-unstyled">
-                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
+                            <li class="nav-item nav justify-content-end"><a href="" class="text-white">Breakfast</a>
                             </li>
                             <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
                             <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
@@ -55,106 +55,112 @@
     </header>
 
     <main>
-        <!-- PHOTO OF THE FOOD -->
+        <!-- PHOTO PLACEHOLDER -->
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mt-5">
                     <div class="card">
-                        <img src="https://picsum.photos/200/200" class="card-img-top" alt="...">
+                        <img src="" id="photo" class="card-img-top" alt="...">
 
-                        <!-- DETAILS -->
+                        <!-- DETAILS PLACEHOLDER-->
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Time: 40 min</li>
-                            <li class="list-group-item">Cal: 400</li>
+                            <li class="list-group-item" id="time"></li>
+                            <li class="list-group-item" id="calories"></li>
                             <li class="list-group-item">
-                                <i id="popover" class="fa" data-toggle="popover" title="Copied!" data-content="Look! I found an AWESOME recipe! ...Link..." style="font-size:24px">&#xf1e0;</i>
+                                <i id="popover" class="fa" data-toggle="popover" title="Copied!"
+                                    data-content="Look! I found an AWESOME recipe! ...Link..."
+                                    style="font-size:24px">&#xf1e0;</i>
                                 Share with friends
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- INGREDIENTS -->
+                <!-- INGREDIENTS PLACEHOLDER-->
                 <div class="col-md-6 mt-4">
                     <div class="text-center">
                         <h2>Ingredients</h2>
-                        <ul class="text-left">
-                            <li>Eggs</li>
-                            <li>Flour</li>
-                            <li>Honey</li>
-                        </ul>
+                        <ul class="text-left" id="ingredients"></ul>
 
-                        <!-- DESCRIPTION -->
+                        <!-- DESCRIPTION PLACEHOLDER -->
                         <h2 class="mt-4">Description</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Repellendus eius, dolorum facere iure commodi officia unde.
-                            Deserunt alias voluptates neque corrupti velit, sequi ut, nobis, quae rem labore adipisci
-                            similique!
-                        </p>
+                        <p id="description"></p>
 
                         <!-- LINK TO THE SOURCE -->
                         <h2 class="mt-4">How to cook</h2>
-                        <a href="#">Some link</a>
+                        <a href="#" id="link">Click here to see all steps</a>
 
                         <!-- Reviews -->
                         <div class="mt-4" id="reviews">
                             <button type="button" class="btn btn-secondary " data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@mdo">Write a review</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                data-target="#reviewModal" data-address="review">
+                                Write a review
+                            </button>
+
+                            <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">New comment</h5>
+                                            <h4>Share your experience</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form id="review-modal">
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                    <textarea class="form-control" id="review-text"></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Add</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Add</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <ul class=" text-left mt-5">
-                                <li class="mb-2">
-                                    I LOVE IT!
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-remove" style="color: red"></i>
-                                </li>
 
-                                <li class="mb-2">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Voluptas architecto eveniet quidem dicta officia laborum consectetur fugit
-                                    repellendus ipsa,
-                                    voluptates quam, praesentium aliquid quia minus eos nostrum enim, aut libero.
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-remove" style="color: red"></i>
-                                </li>
-                                <li class="mb-2">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Voluptas architecto eveniet quidem dicta officia laborum consectetur fugit
-                                    repellendus ipsa,
-                                    voluptates quam, praesentium aliquid quia minus eos nostrum enim, aut libero.
-                                    <i class="fa fa-edit"></i>
-                                    <i class="fa fa-remove" style="color: red"></i>
-                                </li>
+                            <!-- MODAL FOR UPDATING REVIEW -->
+
+                            <div class="modal fade" id="updateReviewModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Update your review</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="update-review-modal">
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="update-review-text"></textarea>
+                                                    <input type="hidden" id="update-review-modal-review-id" name="reviewId" value=""> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button id="submit-changes" type="submit"
+                                                        class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="text-left mt-5" id="reviewsUl">
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 

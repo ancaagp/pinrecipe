@@ -1,14 +1,14 @@
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-header{
+header {
     flex: 0 0 auto;
  }
  
@@ -16,7 +16,7 @@ main {
     flex: 1 0 auto;
 }
  
-footer{
+footer {
     width: 100%;
     flex: 0 0 auto;
     background-color: #343a40;
@@ -27,6 +27,11 @@ footer{
 
 .copyright {
     margin: 10px 50px 10px 0;
+}
+
+i {
+    margin: 4px 5px;
+
 }
  
  

@@ -10,6 +10,7 @@ const RecipeSchema = new Schema ({
     cookingTime: String,
     image: String,
     link: String,
+    ingredients: [String],
     reviews: [Review.schema], // embedding reviews in recipe
 },
 {timestamps: true});
