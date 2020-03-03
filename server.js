@@ -23,6 +23,12 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/recipes/:recipeId', (req, res) => {
+    res.sendFile('views/recipe/showRecipe.html', {
+        root: __dirname 
+    });
+});
+
 // -------------------- API RECIPE ROUTES
 
 // GET recipes index
@@ -103,6 +109,8 @@ app.get('/api/v1/reviews', (req, res) => {
 //POST new review
 app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
     db.Review.create(req.body, (err, newReview) => {
+        console.log(req.body);
+        
         if (err) {
             return res.status(404).json({status: 404, error: 'Cannot create a review.'});
         };
