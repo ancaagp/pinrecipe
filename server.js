@@ -19,13 +19,13 @@ app.use(express.static(__dirname + '/public'));
 // // testing view routes
 app.get('/', (req, res) => {
     res.sendFile('views/index.html', {
-        root: __dirname 
+        root: __dirname
     });
 });
 
 app.get('/recipes/:recipeId', (req, res) => {
     res.sendFile('views/recipe/showRecipe.html', {
-        root: __dirname 
+        root: __dirname
     });
 });
 
@@ -35,20 +35,20 @@ app.get('/recipes/:recipeId', (req, res) => {
 
 app.get('/api/v1/recipes', (req, res) => {
     db.Recipe.find({})
-    .populate('reviews.user', 'firstName lastName _id')
-    .exec((err, foundRecipes) => {
-        if (err) return res.status(404).json({status: 404, error: 'Cannot find all recipes.'});
+        .populate('reviews.user', 'firstName lastName _id')
+        .exec((err, foundRecipes) => {
+            if (err) return res.status(404).json({ status: 404, error: 'Cannot find all recipes.' });
 
-        res.json(foundRecipes);
-    });
+            res.json(foundRecipes);
+        });
 });
 
 // GET recipe show
 
 app.get('/api/v1/recipes/:id', (req, res) => {
     db.Recipe.findById(req.params.id, (err, foundRecipe) => {
-        if (err) return res.status(404).json({status: 404, error: 'Cannot find one recipe.'})
-        
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find one recipe.' })
+
         res.json(foundRecipe);
     });
 });
@@ -58,7 +58,7 @@ app.get('/api/v1/recipes/:id', (req, res) => {
 app.post('/api/v1/recipes', (req, res) => {
 
     db.Recipe.create(req.body, (err, newRecipe) => {
-        if (err) return res.status(404).json({status: 404, error: 'Cannot create recipe.'})
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot create recipe.' })
 
         res.json(newRecipe);
     });
@@ -66,8 +66,8 @@ app.post('/api/v1/recipes', (req, res) => {
 
 // PUT recipe update
 app.put('/api/v1/recipes/:id', (req, res) => {
-    db.Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe) => {
-        if (err) return res.status(404).json({status: 404, error: 'Cannot update recipe.'})
+    db.Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedRecipe) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot update recipe.' })
 
         res.json(updatedRecipe);
     });
@@ -76,7 +76,7 @@ app.put('/api/v1/recipes/:id', (req, res) => {
 // DELETE recipe destroy
 app.delete('/api/v1/recipes/:id', (req, res) => {
     db.Recipe.findByIdAndDelete(req.params.id, (err, deletedRecipe) => {
-        if (err) return res.status(404).json({status: 404, error: 'Cannot deleted recipe.'})
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot deleted recipe.' })
 
         res.json(deletedRecipe);
     });
@@ -88,7 +88,7 @@ app.delete('/api/v1/recipes/:id', (req, res) => {
 app.get('/api/v1/reviews', (req, res) => {
     db.Review.find({}, (err, foundReviews) => {
         if (err) {
-            return res.status(404).json({status: 404, error: 'Cannot find all reviews.'});
+            return res.status(404).json({ status: 404, error: 'Cannot find all reviews.' });
         }
 
         res.json(foundReviews);
@@ -110,18 +110,18 @@ app.get('/api/v1/reviews', (req, res) => {
 app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
     db.Review.create(req.body, (err, newReview) => {
         if (err) {
-            return res.status(404).json({status: 404, error: 'Cannot create a review.'});
+            return res.status(404).json({ status: 404, error: 'Cannot create a review.' });
         };
 
         db.Recipe.findById(req.params.recipeId, (err, foundRecipe) => {
             if (err) {
-                return res.status(404).json({status: 404, error: 'Cannot find a recipe to add review.'});
+                return res.status(404).json({ status: 404, error: 'Cannot find a recipe to add review.' });
             };
 
             foundRecipe.reviews.push(newReview);
             foundRecipe.save((err, savedRecipe) => {
                 if (err) {
-                    return res.status(404).json({status: 404, error: 'Cannot save a recipe with a new review.'});
+                    return res.status(404).json({ status: 404, error: 'Cannot save a recipe with a new review.' });
                 };
 
                 res.json(savedRecipe);
@@ -133,30 +133,30 @@ app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
 // PUT a review by id
 app.put('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
     // console.log(req.params.reviewId); - reviewId
-    
+
     db.Recipe.findById(req.params.recipeId, (err, foundRecipe) => {
         if (err) {
-            return res.status(404).json({status: 404, error: 'Cannot find a recipe to update review.'});
+            return res.status(404).json({ status: 404, error: 'Cannot find a recipe to update review.' });
         };
 
         const reviewToUpdate = foundRecipe.reviews.id(req.params.reviewId);
         // console.log(reviewToUpdate);
-        
+
 
         if (!reviewToUpdate) {
-            return res.status(404).json({status: 404, error: 'Cannot find a review to update.'});
+            return res.status(404).json({ status: 404, error: 'Cannot find a review to update.' });
         };
 
         reviewToUpdate.body = req.body.body;
 
         foundRecipe.save((err, savedRecipe) => {
             if (err) {
-                return res.status(404).json({status: 404, error: 'Cannot save a recipe with updated review.'});
+                return res.status(404).json({ status: 404, error: 'Cannot save a recipe with updated review.' });
             };
 
             db.Review.findByIdAndUpdate(req.params.reviewId, (err, updatedReview) => {
                 if (err) {
-                    return res.status(404).json({status: 404, error: 'Cannot save a recipe with updated review.'});
+                    return res.status(404).json({ status: 404, error: 'Cannot save a recipe with updated review.' });
                 };
 
                 res.json(updatedReview);
@@ -193,24 +193,41 @@ app.delete('/api/v1/recipes/:recipeId/reviews/:reviewId', (req, res) => {
 
 // ---------------------------------------------API USER ROUTES
 
-//GET users index
+// GET user show
+app.get('/api/v1/users/:id', (req, res) => {
+    db.User.findById(req.params.id, (err, User) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
 
+        res.json(User);
+    })
+})
 
-//GET user show
-
-//POST new user
-app.post('/api/v1/users/', (req, res) => {
+// POST new user
+app.post('/api/v1/users', (req, res) => {
     db.User.create(req.body, (err, newUser) => {
-        if (err) return res.status(404).json({ status: 404, error: 'Cannot create a user' });
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
 
         res.json(newUser);
     });
 });
 
 // PUT a user by id
+app.put('/api/v1/users/:id', (req, res) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+
+        res.json(updatedUser);
+    });
+});
 
 // DELETE a user by id
+app.delete('/api/v1/users/:id', (req, res) => {
+    db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
 
+        res.json(deletedUser);
+    });
+});
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`));
