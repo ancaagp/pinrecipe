@@ -5,32 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinrecipe</title>
-
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="/styles/recipe/categoryMain.css">
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- CONNECT MAIN JS FILE -->
+    <script defer src="/scripts/recipes/dinner.js"></script>
+
 </head>
 
-<!-- BOOTSTRAP ALBUM -->
-
 <body>
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION MENU -->
     <header>
         <div class="bg-dark collapse" id="navbarHeader">
             <div class="container">
                 <div class="row nav justify-content-end">
                     <div class="col-sm-4 py-4">
                         <h4 class="text-white nav justify-content-end mb-3">
-                            <a href="#" class="text-white">Profile</a>
+                            <a href="/">Main Page</a>
+                        </h4>
+
+                        <h4 class="text-white nav justify-content-end mb-3">
+                            <a href="/user/profile">Profile</a>
                         </h4>
                         <ul class="list-unstyled">
-                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Breakfast</a>
+                            <li class="nav-item nav justify-content-end"><a href="/breakfast" class="text-white">Breakfast</a>
                             </li>
-                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Lunch</a></li>
-                            <li class="nav-item nav justify-content-end"><a href="#" class="text-white">Dinner</a></li>
+                            <li class="nav-item nav justify-content-end"><a href="/lunch" class="text-white">Lunch</a></li>
+                            <li class="nav-item nav justify-content-end"><a href="/dinner" class="text-white">Dinner</a></li>
+                            <li class="nav-item nav justify-content-end"><a href="/dessert" class="text-white">Dessert</a></li>
                             <li class="nav-item nav justify-content-end mt-2"><a href="#"
                                     class="text-white font-weight-bold">Log Out</a></li>
                         </ul>
@@ -38,6 +44,7 @@
                 </div>
             </div>
         </div>
+
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-end">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -54,12 +61,22 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1>Dinner</h1>
-                <p class="lead text-muted">Best Dinner recipes.</p>
+                <p class="lead text-muted">Inspiration for dinner ideas.</p>
             </div>
         </section>
+
+        <!-- RECIPE CARDS SECTION -->
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div id="recipe" class="row">
+                    <!-- RECIPE CARD--->
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
+        <p class="backTop"><a href="#"> Back to top</a></p>
         <p class="copyright">&copy; 2020 Pinrecipe</p>
     </footer>
 
