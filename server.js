@@ -16,13 +16,6 @@ app.use(express.static(__dirname + '/public'));
 
 // -------------------- API ROUTES
 
-// // testing view routes
-app.get('/', (req, res) => {
-    res.sendFile('views/index.html', {
-        root: __dirname 
-    });
-});
-
 // -------------------- API RECIPE ROUTES
 
 // GET recipes index
@@ -234,6 +227,27 @@ app.delete('/api/v1/users/:id', (req, res) => {
         res.json(deletedUser);
     });
 });
+
+
+// ----------------- VIEW ROUTES
+
+// VIEW INDEX
+
+app.get('/', (req, res) => {
+    res.sendFile('views/index.html', {
+        root: __dirname 
+    });
+});
+
+// VIEW SINGLE RECIPE
+
+app.get('/recipes/:id', (req, res) => {
+    res.sendFile('views/recipe/showRecipe.html', {
+        root: __dirname 
+    });
+});
+
+
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`));
