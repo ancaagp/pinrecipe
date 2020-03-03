@@ -59,6 +59,12 @@ app.get('/user/profile', (req, res) => {
     });
 });
 
+app.get('/user', (req, res) => {
+    res.sendFile('views/user/logInPage.html', {
+        root: __dirname
+    });
+});
+
 // -------------------- API RECIPE ROUTES
 
 // GET recipes index
