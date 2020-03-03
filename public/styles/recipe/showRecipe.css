@@ -10,7 +10,7 @@ body {
 
 header {
     flex: 0 0 auto;
- }
+}
  
 main {
     flex: 1 0 auto;
@@ -31,7 +31,6 @@ footer {
 
 i {
     margin: 4px 5px;
-
 }
  
  
