@@ -59,6 +59,21 @@ const recipes = [
         cookingTime: "25min",
         image: "https://www.simplyrecipes.com/wp-content/uploads/2010/04/eggs-benedict-vertical-a-1600-809x1024.jpg",
         link: "https://www.simplyrecipes.com/recipes/eggs_benedict/",
+    },
+    {
+        name: "Pesto Pasta",
+        description: "Easy to make, but full of flavor! Good hot or cold.",
+        calories: 225,
+        ingredients: [
+            "1/2 cup chopped onion",
+            "2 1/2 tablespoons pesto2 tablespoons olive oil",
+            "Extra Virgin Robust Olive Oil",
+            "2 tablespoons grated Parmesan cheese",
+            "1 (16 ounce) package pasta",
+        ],
+        cookingTime: "15min",
+        image: "https://www.recipetineats.com/wp-content/uploads/2019/02/Pesto-Pasta_2-1.jpg",
+        link: "https://www.allrecipes.com/recipe/11887/pesto-pasta/",
     }
 ];
 
