@@ -23,6 +23,8 @@ getRecipe();
 
 // Render the page
 function render(recipeObj) {
+    console.log(recipeObj);
+    
     setPhotoColumn(recipeObj);
     setIngredients(recipeObj.ingredients);
     setDescription(recipeObj.description);
