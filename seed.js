@@ -78,6 +78,36 @@ const recipes = [
         category: ["Lunch", "Dinner"],
         image: "https://www.recipetineats.com/wp-content/uploads/2019/02/Pesto-Pasta_2-1.jpg",
         link: "https://www.allrecipes.com/recipe/11887/pesto-pasta/",
+    },
+    {
+        ingredients: ["1 1/2 cups all-purpose flour", "3 1/2 teaspoons baking powder", "1 teaspoon salt", " butter", " milk", " egg"],
+        category: ["breakfast", "dessert"],
+        name: "Old Fashioned Pancakes",
+        description: "Delicious pancakes to be savoured with coffee at breakfast.",
+        image: "https://images.media-allrecipes.com/userphotos/720x405/4948036.jpg",
+        link: "https://www.allrecipes.com/recipe/21014/good-old-fashioned-pancakes/",
+        calories: "158",
+        cookingTime: "20min",
+    },
+    {
+        ingredients: ["oats", "almond milk", "peanut butter"],
+        category: ["breakfast"],
+        name: "Peanut butter oats",
+        description: "Overnight oats",
+        image: "https://minimalistbaker.com/wp-content/uploads/2015/07/CRAZY-DELICIOUS-AMAZING-Peanut-Butter-Overnight-Oats-Just-5-ingredients-5-minutes-prep-and-SO-delicious-vegan-recipe-glutenfree-meal-breakfast-oats-oatmeal.jpg",
+        calories: "300",
+        link: "https://minimalistbaker.com/peanut-butter-overnight-oats/",
+        cookingTime: "3h",
+    },
+    {
+        ingredients: ["1/2 cup raisins", "1/4 cup rum", "2 tbsp active dry yeast", "1/4 cup warm water", "2 cups milk", "1 cup butter unsalted", "3 tbsp lemon zest", "1 1/2 cups sugar", "8 cups all-purpose flour", "5 eggs separated", "2 tsp vanilla extract", "walnuts or pecans", "5 tbsp sugar", "2 tbsp cocoa powder", "2 tbsp vegetable oil", "1 egg beaten"],
+        category: (2) ["breakfast", "dessert"],
+        name: "Walnut roll",
+        description: "Sweet Walnut Roll known as “Cozonac cu Nuca” is a traditional Romanian sweet bread made with raisins and walnuts or pecans enjoyed at Christmas and Easter.",
+        image: "https://www.jocooks.com/wp-content/uploads/2016/12/cozonac-cu-nuca-1-4.jpg",
+        calories: "264",
+        link: "https://www.jocooks.com/recipes/walnut-roll/",
+        cookingTime: "3h 35min",
     }
 ];
 

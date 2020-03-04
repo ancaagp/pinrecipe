@@ -99,7 +99,7 @@ postRecipe.addEventListener('submit', (event) => {
         description: description.value,
         image: linkImage.value,
         calories: calories.value,
-        method: linkMethod.value,
+        link: linkMethod.value,
         cookingTime: cookingTime.value,
         ingredients: ingredients.value.split(','),
         category: categories,
