@@ -35,7 +35,8 @@ function render(recipeObj) {
 //-------------------------------------------------------------------------------- SET PHOTO
 
 function setPhotoColumn(recipeObj) {
-    photoPlaceholder.setAttribute('src', recipeObj.image);
+    let image = recipeObj.image ? recipeObj.image : "https://blog.myfitnesspal.com/wp-content/uploads/2018/01/UACF_EG_Hero_NoBadge_Healthy-Eating-752x472.jpg";
+    photoPlaceholder.setAttribute('src', image);
     cookingTimePlaceholder.textContent = `Time: ${recipeObj.cookingTime}`
     caloriesPlaceholder.textContent = `Calories: ${recipeObj.calories}`
 
