@@ -294,24 +294,51 @@ app.delete('/api/v1/users/:id', (req, res) => {
     });
 });
 
+// ---------------------------------------------- AUTH ROUTES
 
-// ----------------- VIEW ROUTES
+// User Register
 
-// VIEW INDEX
-
-// app.get('/', (req, res) => {
-//     res.sendFile('views/index.html', {
-//         root: __dirname 
-//     });
-// });
-
-// VIEW SINGLE RECIPE
-
-// app.get('/recipes/:id', (req, res) => {
-//     res.sendFile('views/recipe/showRecipe.html', {
-//         root: __dirname 
-//     });
-// });
+app.post('/register', (req, res) => {
+    db.User.findOne({email: req.body.email}, (err, foundUser) => {
+        if (err) return res.status(400).json({
+            status: 400,
+            message: "Something went wrong, please try again."
+        });
+        if (foundUser) return res.status(400).json({
+            status: 400,
+            message: "Email is already registered. Please try again."
+        });
+        bcrypt.genSalt(10, (err, salt) => {
+            if (err) return res.status(400).json({
+                status: 400,
+                message: "Something went wrong, please try again."
+            });
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+                if (err) return res.status(400).json({
+                    status: 400,
+                    message: "Something went wrong, please try again",
+                });
+                const {firstName, lastName, email} = req.body;
+                const newUser = {
+                    firstName,
+                    lastName,
+                    email,
+                    password: hash,
+                };
+                // Create new user
+                db.User.create(newUser, (err, createdUser) => {
+                    if (err) return res.status(400).json({
+                        status: 400,
+                        message: "Something went wrong, please try again",
+                });
+                res.status(201).json({
+                    status: 201,
+                    message: "Success",
+                });
+            });
+        });
+    });
+});
 
 
 

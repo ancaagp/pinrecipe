@@ -111,6 +111,22 @@ const recipes = [
     }
 ];
 
+const users = [
+    {
+        firstName: "Anca",
+        lastName: "Agapi",
+        email: "anca@test.com",
+        password: "123",
+    },
+    {
+        firstName: "Lia",
+        lastName: "Tsernat",
+        email: "lia@test.com",
+        password: "321",
+    }
+];
+
+
 db.Recipe.deleteMany({}, (err, result) => {
     if (err) {
         console.log(err);
@@ -133,6 +149,14 @@ db.Recipe.deleteMany({}, (err, result) => {
             };
             console.log(`Deleted ${result.deletedCount} users.`);
 
+            db.User.create(users, (err, newUsers) => {
+                if (err) {
+                    console.log(err);
+                    process.exit();
+                } 
+                console.log(`Created ${newUsers.length} users.`);
+                process.exit();
+            });
 
             console.log("Creating new recipes.");
             db.Recipe.create(recipes, (err, newRecipes) => {
