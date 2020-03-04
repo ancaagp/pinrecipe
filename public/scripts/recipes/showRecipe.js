@@ -1,12 +1,15 @@
 const API_BASE = '/api/v1';
+// Find photo placeholder
 const photoPlaceholder = document.getElementById('photo');
-
+// Find recipeID in URL
 const recipeId = window.location.pathname.split('/')[2];
+
+//Find details placeholders
 const cookingTimePlaceholder = document.getElementById('time');
 const caloriesPlaceholder = document.getElementById('calories');
 const popoverPlaceholder = document.getElementById('popover');
 
-
+// GET information from database
 function getRecipe() {
     fetch(`${API_BASE}/recipes/${recipeId}`)
         .then((stream) => stream.json())
@@ -18,7 +21,10 @@ getRecipe();
 
 //-------------------------------------------------------------------------------- RENDER PAGE
 
+// Render the page
 function render(recipeObj) {
+    console.log(recipeObj);
+    
     setPhotoColumn(recipeObj);
     setIngredients(recipeObj.ingredients);
     setDescription(recipeObj.description);
@@ -29,13 +35,15 @@ function render(recipeObj) {
 //-------------------------------------------------------------------------------- SET PHOTO
 
 function setPhotoColumn(recipeObj) {
-    console.log(recipeObj);
-
     photoPlaceholder.setAttribute('src', recipeObj.image);
     cookingTimePlaceholder.textContent = `Time: ${recipeObj.cookingTime}`
     caloriesPlaceholder.textContent = `Calories: ${recipeObj.calories}`
-    // popoverPlaceholder.data-content;
-    // console.log(popoverPlaceholder);  
+
+    // Generates a message to share with friends
+    let shareMessage = `Look! I found an awesome recipe ${window.location.pathname}`;
+
+    // Put it on the page
+    popoverPlaceholder.setAttribute('data-content', shareMessage);
 };
 
 //-------------------------------------------------------------------------------- SET INGREDIENTS
@@ -43,6 +51,8 @@ function setPhotoColumn(recipeObj) {
 function setIngredients(array) {
     const ingredientsUl = document.getElementById('ingredients');
     if (ingredientsUl.childNodes.length === 0) {
+
+        // Iterate through Recipe.ingredients and render on the page
         for (let i = 0; i < array.length; i += 1) {
             let li = document.createElement('li');
             li.textContent = array[i];
@@ -71,10 +81,13 @@ function provideHowToCookLink(strLink) {
 
 function renderReviews(reviewsArray) {
     let reviewUl = document.getElementById('reviewsUl');
+
+    // Remove reviews from the page before rendering
     while (reviewUl.childNodes.length) {
         reviewUl.removeChild(reviewUl.childNodes[reviewUl.childNodes.length - 1]);
     };
 
+    // Iterate through Recipe.reviews and render
     for (let i = 0; i < reviewsArray.length; i += 1) {
         let reviewLi = document.createElement('li');
         let editIcon = document.createElement('i');
@@ -101,17 +114,19 @@ function renderReviews(reviewsArray) {
 
 //-------------------------------------------------------------------------------- ADD NEW REVIEW
 
+// Create a review
 const reviewForm = document.getElementById('review-modal');
 reviewForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const body = document.getElementById('review-text');
 
+    // Continue if review has a text
     if (body.value.length > 0) {
         const newReview = { body: body.value };
         document.getElementById('review-text').value = "";
-        // console.log(newReview);
 
+        // Send POST request to review routes
         fetch(`/api/v1/recipes/${recipeId}/reviews`, {
             method: 'POST',
             headers: {
@@ -121,8 +136,11 @@ reviewForm.addEventListener('submit', (event) => {
         })
             .then((stream) => stream.json())
             .then((res) => {
-                // console.log(res);
+
+                // Render a page with a new review
                 getRecipe();
+
+                // Hide the modal
                 $('#reviewModal').modal('hide')
             });
     };
@@ -132,29 +150,30 @@ reviewForm.addEventListener('submit', (event) => {
 //------------------------------------------------------------------------------------------------- EDIT REVIEW (MODAL)
 
 function editReview(event) {
+    // If review for update exist
     if (event.target.classList.contains('edit-review')) {
         const updateBody = document.getElementById('update-review-text');
+
+        // Set the value of the review
         updateBody.value = event.target.parentNode.textContent;
 
         let reviewId = event.target.parentNode.id;
         document.getElementById("update-review-modal-review-id").setAttribute("value", reviewId);
 
         $('#updateReviewModal').modal('show');
-
-        
     };
 };
 const updateForm = document.getElementById('update-review-modal');
 
 updateForm.addEventListener('submit', function (event) {
-    console.log('HERE');
-
     event.preventDefault();
+
+    // Get a new review text
     const updateBody = document.getElementById('update-review-text');
     const reviewId = document.getElementById("update-review-modal-review-id").getAttribute("value")
     let updatedReview = { body: updateBody.value };
-    console.log(updatedReview);
 
+    // Send PUT request to review route
     fetch(`/api/v1/recipes/${recipeId}/reviews/${reviewId}`, {
         method: 'PUT',
         headers: {
@@ -164,8 +183,10 @@ updateForm.addEventListener('submit', function (event) {
     })
         .then((stream) => stream.json())
         .then((res) => {
-            // console.log(res);
+            // Render the page again with a new information
             getRecipe();
+
+            // Close Update modal
             $('#updateReviewModal').modal('hide')
         });
 
@@ -196,21 +217,37 @@ function deleteReview(event) {
 $('#reviewModal').on('show.bs.modal');
 
 //------------------------------------------------------------------------------------------------- Show message "Share..." on click
+// Open popover message
 $('#popover').on('click', function () {
     $('#popover').popover('show');
+
+    // Get the text from the popover
     let message = $('#popover')[0].dataset.content;
 
+    // Handle copy function
     copyToClipboard(message);
 });
 
 //------------------------------------------------------------------------------------------------- Automatically copy message to clipboard
 
 function copyToClipboard(str) {
+
+    // Create textarea
     const el = document.createElement('textarea');
+
+    // Set the value of popover as a text of texarea
     el.value = str;
+
+    // Append as an HTML <body> child
     document.body.appendChild(el);
+    
+    // Select element
     el.select();
+
+    // Make a copy
     document.execCommand('copy');
+
+    // Remove child from <body>
     document.body.removeChild(el);
 };
 
