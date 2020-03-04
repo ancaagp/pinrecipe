@@ -11,6 +11,7 @@ const RecipeSchema = new Schema ({
     image: String,
     link: String,
     ingredients: [String],
+    category: [String],
     reviews: [Review.schema], // embedding reviews in recipe
 },
 {timestamps: true});
