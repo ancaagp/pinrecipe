@@ -1,5 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+// Require bcrypt
+const bcrypt = require('bcryptjs');
+// Require session for auth
+const session = require('express-session');
+// Ask again what it does
+const MongoStore = require('connect-mongo')(session);
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -13,6 +21,18 @@ const db = require('./models');
 // Serve public assets
 app.use(express.static(__dirname + '/public'));
 
+// Express session
+app.use(session({
+    store: new MongoStore({
+        url: process.env.MONGODB_URI || 'mongodb://localhost:27017/pinrecipe',
+    }),
+    secret: 'Qazxdredcvgytgbnjiujm,lpol',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 // Two weeks
+    },
+}));
 
 // -------------------- VIEW ROUTES
 
@@ -149,17 +169,6 @@ app.get('/api/v1/reviews', (req, res) => {
     });
 });
 
-//GET review show
-// app.get('/api/v1/recipes/:id/reviews/:id', (req, res) => {
-//     db.Review.findById(req.params.id, (err, foundReview) => {
-//         if (err) {
-//             return res.status(404).json({status: 404, error: 'Cannot find a review by id.'});
-//         };
-
-//         res.json(foundReview);
-//     });
-// });
-
 //POST new review
 app.post('/api/v1/recipes/:recipeId/reviews', (req, res) => {
     // First create review in Review collection
@@ -295,25 +304,54 @@ app.delete('/api/v1/users/:id', (req, res) => {
 });
 
 
+
+// *************************************************************************  USER LOGIN
+app.post('/login', (req, res) => {
+
+    // Find user by email
+    db.User.findOne({ email: req.body.email }, (err, foundUser) => {
+        if (err) return res.status(400).json({ status: 400, error: "Something went wrong, please try again" });
+
+        //  If no user exists - return error
+        if (!foundUser) return res.status(400).json({ status: 400, error: "Invalid credentials" });
+
+        // Compare passwords using bcrypt method compare()
+        bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
+            if (err) return res.status(400).json({ status: 400, error: "Something went wrong, please try again" });
+
+            if (isMatch) {
+                // Construct a current user obj for session WITHOUT password
+                const currentUser = {
+                    _id: foundUser._id,
+                    firstName: foundUser.firstName,
+                    lastName: foundUser.lastName,
+                    email: foundUser.email
+                };
+
+                // Create a new session
+                req.session.currentUser = currentUser;
+
+                // Respond
+                res.status(200).json({ status: 200, message: "Success!" });
+            } else {
+                res.status(401).json({ status: 401, error: "Unauthorized, please try again" });
+            }
+        })
+    })
+})
+
+//********************************************************************************* 
+
+
+
+
+
+
 // ----------------- VIEW ROUTES
 
-// VIEW INDEX
-
-// app.get('/', (req, res) => {
-//     res.sendFile('views/index.html', {
-//         root: __dirname 
-//     });
-// });
-
-// VIEW SINGLE RECIPE
-
-// app.get('/recipes/:id', (req, res) => {
-//     res.sendFile('views/recipe/showRecipe.html', {
-//         root: __dirname 
-//     });
-// });
-
-
+app.use('*', (req, res) => {
+    res.send('<h2>Error 404: Not Found</h2>');
+});
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`));
