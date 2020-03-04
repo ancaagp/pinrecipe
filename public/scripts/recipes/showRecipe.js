@@ -33,8 +33,6 @@ function render(recipeObj) {
 //-------------------------------------------------------------------------------- SET PHOTO
 
 function setPhotoColumn(recipeObj) {
-    console.log(recipeObj);
-
     photoPlaceholder.setAttribute('src', recipeObj.image);
     cookingTimePlaceholder.textContent = `Time: ${recipeObj.cookingTime}`
     caloriesPlaceholder.textContent = `Calories: ${recipeObj.calories}`
@@ -237,9 +235,17 @@ function copyToClipboard(str) {
 
     // Set the value of popover as a text of texarea
     el.value = str;
+
+    // Append as an HTML <body> child
     document.body.appendChild(el);
+    
+    // Select element
     el.select();
+
+    // Make a copy
     document.execCommand('copy');
+
+    // Remove child from <body>
     document.body.removeChild(el);
 };
 
