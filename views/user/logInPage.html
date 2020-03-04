@@ -4,21 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinrecipe</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="/styles/main.css">
-
-    <!-- CONNECT MAIN JS FILE -->
-    <script defer src="/scripts/recipes/lunch.js"></script>
-
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="/styles/user/logIn.css">
+    <script defer src="/scripts/user/userLogIn.js"></script>
+    <title>Pinrecipe Login</title>
 </head>
 
-<body>
-    <!-- NAVIGATION MENU -->
+<body class="text-center">
     <header>
         <div class="bg-dark collapse" id="navbarHeader">
             <div class="container">
@@ -28,15 +25,20 @@
                             <a href="/">Main Page</a>
                         </h4>
 
-                        <h4 class="text-white nav justify-content-end mb-3">
+                        <!-- <h4 class="text-white nav justify-content-end mb-3">
                             <a href="/user/profile">Profile</a>
-                        </h4>
+                        </h4> -->
                         <ul class="list-unstyled">
-                            <li class="nav-item nav justify-content-end"><a href="/breakfast" class="text-white">Breakfast</a>
+                            <li class="nav-item nav justify-content-end"><a href="/breakfast"
+                                    class="text-white">Breakfast</a>
                             </li>
-                            <li class="nav-item nav justify-content-end"><a href="/lunch" class="text-white">Lunch</a></li>
-                            <li class="nav-item nav justify-content-end"><a href="/dinner" class="text-white">Dinner</a></li>
-                            <li class="nav-item nav justify-content-end"><a href="/dessert" class="text-white">Dessert</a></li>
+                            <li class="nav-item nav justify-content-end"><a href="/lunch" class="text-white">Lunch</a>
+                            </li>
+                            <li class="nav-item nav justify-content-end"><a href="/dinner" class="text-white">Dinner</a>
+                            </li>
+                            <li class="nav-item nav justify-content-end"><a href="/dessert"
+                                    class="text-white">Dessert</a>
+                            </li>
                             <li class="nav-item nav justify-content-end mt-2"><a href="#"
                                     class="text-white font-weight-bold">Log Out</a></li>
                         </ul>
@@ -44,7 +46,6 @@
                 </div>
             </div>
         </div>
-
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-end">
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -55,32 +56,34 @@
             </div>
         </div>
     </header>
-
-    <main role="main">
-        <!-- HERO SECTION -->
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1>Lunch</h1>
-                <p class="lead text-muted">Inspiration for lunch ideas.</p>
-            </div>
-        </section>
-
-        <!-- RECIPE CARDS SECTION -->
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div id="recipe" class="row">
-                    <!-- RECIPE CARD--->
-                </div>
+    <main>
+        <div class="container">
+            <div class="row d-flex justify-content-center mt-5">
+                <form class="form-signin" data-bitwarden-watching="1">
+                    <img class="mb-4" src="/images/pinrecipe.png"
+                        alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                        autofocus="">
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <div class="checkbox mb-3 mt-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+                </form>
             </div>
         </div>
+
     </main>
 
     <footer>
-        <p class="backTop"><a href="#"> Back to top</a></p>
         <p class="copyright">&copy; 2020 Pinrecipe</p>
-    </footer>>
+    </footer>
 
-    <!-- BOOTSTRAP JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
