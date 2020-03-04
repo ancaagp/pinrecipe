@@ -54,9 +54,9 @@
     </div>
 </header>
 
-    <!-- BOOTSTRAP MODAL -->
+    <!-- BOOTSTRAP MODAL FOR CREATE NEW RECIPE -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="recipeModal modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,45 +66,52 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="createRecipe">
             <div class="form-group">
                 <label>Recipe name:</label>
-                <input class="form-control col-form-label-sm" placeholder="Required">
+                <input id="recipeName" class="form-control col-form-label-sm" placeholder="Required">
               </div>
               <div class="form-group">
                 <label >Description:</label>
-                <input class="form-control col-form-label-sm" placeholder="Required">
+                <input id="recipeDesc" class="form-control col-form-label-sm" placeholder="Required">
               </div>
               <div class="form-group">
                 <label>Ingredients:</label>
-                <input class="form-control col-form-label-sm" placeholder="Required">
+                <input id="ingredients" class="form-control col-form-label-sm" placeholder="Required">
               </div>
               <div class="form-group">
                 <label>Link to image:</label>
-                <input class="form-control col-form-label-sm" placeholder="Required">
+                <input id="linkImg" class="form-control col-form-label-sm" placeholder="Required">
               </div>
               <div class="form-group">
                 <label>Link to cooking steps:</label>
-                <input class="form-control col-form-label-sm" placeholder="Required">
+                <input id="linkMethod" class="form-control col-form-label-sm" placeholder="Required">
               </div>
 
               <p>This recipe is perfect for:</p>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" id="breakfast">
                 <label class="form-check-label" for="exampleCheck1">Breakfast</label>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" id="lunch">
                 <label class="form-check-label" for="exampleCheck1">Lunch</label>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" id="dinner">
                 <label class="form-check-label" for="exampleCheck1">Dinner</label>
               </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="dessert">
+                <label class="form-check-label" for="exampleCheck1">Dessert</label>
+              </div>
+
+              <!-- FORM BUTTON -->
+              <div class="modal-footer">
+                <button class="btn btn-primary">Add recipe</button>
+              </div>
+
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Add recipe</button>
       </div>
     </div>
   </div>
@@ -140,7 +147,7 @@
         <p>
         <!-- OLD BUTTON:  <a href="#" class="btn btn-secondary my-2">Add new recipe</a> -->
         <!-- modal button -->
-        <button type="button" class="btn btn-secondary my-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Add new recipe</button>
+        <button type="button" class="btn btn-secondary my-2" data-toggle="modal" data-target="#exampleModal">Add new recipe</button>
         </p>
       </div>
     </section>
@@ -178,6 +185,15 @@
     <p class="backTop"><a href="#"> Back to top</a></p>
     <p class="copyright">&copy; 2020 Pinrecipe</p>
   </footer>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+    crossorigin="anonymous"></script> -->
+
 
   <!-- BOOTSTRAP JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

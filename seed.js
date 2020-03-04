@@ -1,6 +1,3 @@
-/* I am not sure we need to pre-create seed for reviews. 
-   They will be connected with recipesId. Before that, our recipes should get ids.
-   I believe, we will create reviews to existing recipes from HTML page */
 
 const db = require('./models');
 console.log(db);
@@ -23,6 +20,7 @@ const recipes = [
         ],
         category: ['Lunch', 'Dinner'],
         cookingTime: "1h 10min",
+        category: ["Dinner", "Lunch"],
         image: "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj",
         link: "https://www.bbcgoodfood.com/recipes/creamy-mushroom-soup",
     },
@@ -42,7 +40,7 @@ const recipes = [
             "1/2 tsp vanilla extract",
         ],
         cookingTime: "55min",
-        category: ['Dessert'],
+        category: ["Dessert"],
         image: "https://minimalistbaker.com/wp-content/uploads/2012/11/chewy-gluten-free-choc-chip-cookies.jpg",
         link: "https://minimalistbaker.com/coconut-chocolate-chip-almond-meal-cookies/",
     },
@@ -60,6 +58,7 @@ const recipes = [
         ],
         category: ['Breakfast'],
         cookingTime: "25min",
+        category: ["Breakfast"],
         image: "https://www.simplyrecipes.com/wp-content/uploads/2010/04/eggs-benedict-vertical-a-1600-809x1024.jpg",
         link: "https://www.simplyrecipes.com/recipes/eggs_benedict/",
     },
@@ -76,6 +75,7 @@ const recipes = [
         ],
         category: ['Lunch', 'Dinner'],
         cookingTime: "15min",
+        category: ["Lunch", "Dinner"],
         image: "https://www.recipetineats.com/wp-content/uploads/2019/02/Pesto-Pasta_2-1.jpg",
         link: "https://www.allrecipes.com/recipe/11887/pesto-pasta/",
     }
