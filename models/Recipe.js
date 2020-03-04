@@ -5,7 +5,7 @@ const Review = require('./Review');
 const RecipeSchema = new Schema ({
     name: String,
     description: String,
-    calories: Number,
+    calories: String,
     method: String,
     cookingTime: String,
     image: String,
