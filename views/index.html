@@ -77,7 +77,7 @@
               </div>
               <div class="form-group">
                 <label>Ingredients:</label>
-                <input id="ingredients" class="form-control col-form-label-sm" placeholder="Required">
+                <input id="ingredients" class="form-control col-form-label-sm" placeholder="eg: butter, flour, milk">
               </div>
               <div class="form-group">
                 <label>Link to image:</label>
@@ -87,22 +87,32 @@
                 <label>Link to cooking steps:</label>
                 <input id="linkMethod" class="form-control col-form-label-sm" placeholder="Required">
               </div>
-
+              <div class="row">
+                <div class="col">
+                  <label>Cooking time (h,m)</label>
+                  <input id="cookingTime" type="text" class="form-control" placeholder="eg: 1h 40min">
+                </div>
+                <div class="col">
+                  <label>Calories per portion</label>
+                  <input id="calories" type="text" class="form-control" placeholder="eg: 300">
+                </div>
+              </div>
+            </br>
               <p>This recipe is perfect for:</p>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="breakfast">
+                <input name="categoryGroup[]" type="checkbox" class="form-check-input" value="breakfast">
                 <label class="form-check-label" for="exampleCheck1">Breakfast</label>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="lunch">
+                <input name="categoryGroup[]" type="checkbox" class="form-check-input" value="lunch">
                 <label class="form-check-label" for="exampleCheck1">Lunch</label>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="dinner">
+                <input name="categoryGroup[]" type="checkbox" class="form-check-input" value="dinner">
                 <label class="form-check-label" for="exampleCheck1">Dinner</label>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="dessert">
+                <input name="categoryGroup[]" type="checkbox" class="form-check-input" value="dessert">
                 <label class="form-check-label" for="exampleCheck1">Dessert</label>
               </div>
 
