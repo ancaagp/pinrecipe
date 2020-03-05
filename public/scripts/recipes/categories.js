@@ -1,5 +1,5 @@
 // getting recipe container for adding the recipe card
-console.log('NEW CATEGORIES');
+// console.log('NEW CATEGORIES');
 
 const card = document.querySelector('#recipe')
 const categorySelected = window.location.pathname.split('/')[1];
