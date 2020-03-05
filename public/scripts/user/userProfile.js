@@ -1,5 +1,6 @@
 // currentUser is undefined. It is just a placeholder
 let currentUser;
+let logoutBtn;
 
 // Get information if currentUser exists = someone is logged in.
 fetch('/api/v1/verify')
@@ -17,6 +18,8 @@ fetch('/api/v1/verify')
 
 // Fill user's fields with the information 
 function renderData(currentUser) { 
+    logoutBtn = document.getElementById('logout');
+    logoutBtn.addEventListener("click", logout);
     console.log(currentUser);
       
     const firstName = document.getElementById('firstName'); 
@@ -26,4 +29,21 @@ function renderData(currentUser) {
     firstName.value = currentUser.firstName;
     lastName.value = currentUser.lastName;
     email.value = currentUser.email;
+};
+
+
+const logout = () => {
+    fetch('/api/v1/logout', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'credentials': 'include', 
+        },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.status === 200) {
+            window.location='/';
+        }
+    });
 };

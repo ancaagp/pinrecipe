@@ -84,9 +84,11 @@ function renderAuthorizedNav() {
   let logoutLi = document.createElement('li');
   logoutLi.setAttribute('class', 'nav-item nav justify-content-end mt-2');
   let logoutLink = document.createElement('a');
-  logoutLink.setAttribute('href', '/login');
+  logoutLink.setAttribute('href', '#');
   logoutLink.setAttribute('class', 'text-white text-white font-weight-bold');
   logoutLink.setAttribute('id', 'logout');
+  logoutBtn = logoutLink;
+  logoutBtn.addEventListener("click", logout);
   logoutLink.textContent = 'Log Out';
   logoutLi.appendChild(logoutLink);
   linksUl.appendChild(logoutLi);
@@ -241,4 +243,21 @@ function getRecipeCard(recipe) {
   </div>
 </div>
   `
+};
+
+
+const logout = () => {
+  fetch('/api/v1/logout', {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+          'credentials': 'include', 
+      },
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      if (data.status === 200) {
+          window.location='/';
+      }
+  });
 };
