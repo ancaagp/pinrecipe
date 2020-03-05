@@ -1,5 +1,4 @@
 
-
 // gets register form
 const registerForm = document.getElementById('registerForm');
 
@@ -36,6 +35,7 @@ function handleRegister (event) {
             userData[input.name] = input.value;
         };
     });
+
     if (formIsValid) {
         // submits user data to server
         console.log('Submitting user data --> userData')
@@ -46,11 +46,30 @@ function handleRegister (event) {
             },
             body: JSON.stringify(userData),
         })
+
+        // What we receive? -----------------------------------------------------------QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
         .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            window.location = '/login';
+        // What we do next? -----------------------------------------------------------QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+        .then((data) => {            
+            if (data.status !== 400) {
+                window.location = '/login';
+            } else {
+                // if we are here - we have a user with existing email
+                handleRegisteredEmail();
+            };
         })
         .catch((err) => console.log(err));
-    }
+    };
+};
+
+// Select email input and display alert message 
+function handleRegisteredEmail() {
+    let emailInput = document.getElementById('inputEmail');
+    console.log(emailInput);
+    emailInput.classList.add('is-invalid');
+    emailInput.insertAdjacentHTML('afterend', `
+        <div class="invalid-feedback">
+        Email is already registered.
+        </div>
+    `);
 }
