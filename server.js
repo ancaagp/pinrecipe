@@ -91,6 +91,10 @@ app.get('/profile', (req, res) => {
 
 // LogIn page
 app.get('/login', (req, res) => {
+    if (req.session.currentUser) {
+        res.redirect('/');
+    };
+
     res.sendFile('views/user/logInPage.html', {
         root: __dirname
     });
@@ -98,6 +102,10 @@ app.get('/login', (req, res) => {
 
 // Register page
 app.get('/register', (req, res) => {
+    if (req.session.currentUser) {
+        res.redirect('/');
+    };
+    
     res.sendFile('views/user/registerPage.html', {
         root: __dirname
     });
@@ -384,6 +392,19 @@ app.post('/api/v1/login', (req, res) => {
         })
     })
 })
+
+
+app.get('/api/v1/verify', (req, res) => {
+    if (req.session.currentUser) {
+        return res.json({
+            status: 200,
+            message: 'Authorized',
+            currentUser: req.session.currentUser,
+        });
+    }
+
+    res.status(401).json({ status: 401, error: 'Unauthorized, please login and try again' });
+});
 
 //********************************************************************************* 
 
