@@ -307,7 +307,7 @@ app.delete('/api/v1/users/:id', (req, res) => {
 
 // User Register
 
-app.post('/register', (req, res) => {
+app.post('/api/v1/register', (req, res) => {
     db.User.findOne({ email: req.body.email }, (err, foundUser) => {
         if (err) return res.status(400).json({
             status: 400,
@@ -351,7 +351,7 @@ app.post('/register', (req, res) => {
 });
 
 // *************************************************************************  USER LOGIN
-app.post('/login', (req, res) => {
+app.post('/api/v1/login', (req, res) => {
 
     // Find user by email
     db.User.findOne({ email: req.body.email }, (err, foundUser) => {

@@ -155,17 +155,16 @@ db.Recipe.deleteMany({}, (err, result) => {
                     process.exit();
                 } 
                 console.log(`Created ${newUsers.length} users.`);
-                process.exit();
-            });
 
-            console.log("Creating new recipes.");
-            db.Recipe.create(recipes, (err, newRecipes) => {
-                if (err) {
-                    console.log(err);
+                console.log("Creating new recipes.");
+                db.Recipe.create(recipes, (err, newRecipes) => {
+                    if (err) {
+                        console.log(err);
+                        process.exit();
+                    } 
+                    console.log(`Created ${newRecipes.length} recipes.`);
                     process.exit();
-                } 
-                console.log(`Created ${newRecipes.length} recipes.`);
-                process.exit();
+                });
             });
         });
     });
