@@ -7,8 +7,7 @@ fetch('/api/v1/verify')
         // Assign the data about currentUser to the variable
         currentUser = data.currentUser;
         console.log(currentUser);
-        
-
+    
         // if currentUser exists (=== true), then set the information on the page
         if (currentUser) {
             renderAuthorizedNav();
@@ -99,13 +98,41 @@ function renderAuthorizedNav() {
 };
 
 
-// function renderUnauthorizedNav() {
+function renderUnauthorizedNav() {
+  let navSection = document.getElementById('unauthorized');
 
-// }
+  // MAIN PAGE section
+  let mainPage = document.createElement('h4');
+  mainPage.setAttribute('class', 'text-white nav justify-content-end mb-3');
+  let mainLink = document.createElement('a');
+  mainLink.setAttribute('href', '/');
+  mainLink.textContent = "Main Page";
+  mainPage.appendChild(mainLink);
+
+  // LOGIN section
+  let login = document.createElement('h4');
+  login.setAttribute('class', 'text-white nav justify-content-end mb-3');
+  login.setAttribute('id', 'login');
+  let loginLink = document.createElement('a');
+  loginLink.setAttribute('href', '/login');
+  loginLink.textContent = "Login";
+  login.appendChild(loginLink);
 
 
+  // REGISTER section
+  let register = document.createElement('h4');
+  register.setAttribute('class', 'text-white nav justify-content-end mb-3');
+  register.setAttribute('id', 'register');
 
+  let registerLink = document.createElement('a');
+  registerLink.setAttribute('href', '/register');
+  registerLink.textContent = "Create Account";
+  register.appendChild(registerLink);
 
+  navSection.appendChild(mainPage);
+  navSection.appendChild(login);
+  navSection.appendChild(register);
+};
 
 //------------------ Render the main section ------------------
 
