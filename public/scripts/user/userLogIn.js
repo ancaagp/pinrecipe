@@ -13,7 +13,7 @@ function handleLogin(event) {
     const formInputs = [...loginForm.elements];
     formInputs.forEach((input) => {
         userData[input.name] = input.value;
-        input.value = "";
+        // input.value = "";
     });
 
     fetch('/api/v1/login', {
