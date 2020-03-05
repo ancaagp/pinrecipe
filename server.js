@@ -54,28 +54,28 @@ app.get('/recipes/:recipeId', (req, res) => {
 
 // Breakfast filter view
 app.get('/breakfast', (req, res) => {
-    res.sendFile('views/recipe/breakfast.html', {
+    res.sendFile('views/recipe/categories.html', {
         root: __dirname
     });
 });
 
 // Lunch filter view
 app.get('/lunch', (req, res) => {
-    res.sendFile('views/recipe/lunch.html', {
+    res.sendFile('views/recipe/categories.html', {
         root: __dirname
     });
 });
 
 // Dinner filter view
 app.get('/dinner', (req, res) => {
-    res.sendFile('views/recipe/dinner.html', {
+    res.sendFile('views/recipe/categories.html', {
         root: __dirname
     });
 });
 
 // Dessert filter view
 app.get('/dessert', (req, res) => {
-    res.sendFile('views/recipe/dessert.html', {
+    res.sendFile('views/recipe/categories.html', {
         root: __dirname
     });
 });
@@ -83,7 +83,7 @@ app.get('/dessert', (req, res) => {
 //--------------------------------------------------------------USER VIEWS
 
 // SHOW user
-app.get('/user/profile', (req, res) => {
+app.get('/profile', (req, res) => {
     res.sendFile('views/user/userProfile.html', {
         root: __dirname
     });
@@ -307,7 +307,7 @@ app.delete('/api/v1/users/:id', (req, res) => {
 
 // User Register
 
-app.post('/register', (req, res) => {
+app.post('/api/v1/register', (req, res) => {
     db.User.findOne({ email: req.body.email }, (err, foundUser) => {
         if (err) return res.status(400).json({
             status: 400,
@@ -351,7 +351,7 @@ app.post('/register', (req, res) => {
 });
 
 // *************************************************************************  USER LOGIN
-app.post('/login', (req, res) => {
+app.post('/api/v1/login', (req, res) => {
 
     // Find user by email
     db.User.findOne({ email: req.body.email }, (err, foundUser) => {
@@ -395,7 +395,9 @@ app.post('/login', (req, res) => {
 // ----------------- VIEW ROUTES
 
 app.use('*', (req, res) => {
-    res.send('<h2>Error 404: Not Found</h2>');
+    res.sendFile('views/errorPage.html', {
+        root: __dirname
+    });
 });
 
 // Start Server
