@@ -406,11 +406,25 @@ app.get('/api/v1/verify', (req, res) => {
     res.status(401).json({ status: 401, error: 'Unauthorized, please login and try again' });
 });
 
+// *************************************************************************  USER LOGOUT
+
+app.delete('/api/v1/logout', (req, res) => {
+    if (!req.session.currentUser) {
+        return res.status(401).json({
+            status: 401,
+            message: "Unauthorized."
+        });
+    }
+    req.session.destroy((err) => {
+        if (err) return res.status(400).json({
+            status: 400,
+            error: "Something went wrong, please try again."
+        });
+        res.json({status: 200, message: "User has logged out."});
+    });
+});
+
 //********************************************************************************* 
-
-
-
-
 
 
 // ----------------- VIEW ROUTES
