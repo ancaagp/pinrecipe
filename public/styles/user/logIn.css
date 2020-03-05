@@ -45,3 +45,7 @@ a {
 a:hover {
     color: white;
 }
+
+input {
+    margin-bottom: 20px;
+}
