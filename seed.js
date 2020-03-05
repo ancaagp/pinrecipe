@@ -161,7 +161,7 @@ db.Recipe.deleteMany({}, (err, result) => {
                     if (err) {
                         console.log(err);
                         process.exit();
-                    }
+                    } 
                     console.log(`Created ${newRecipes.length} recipes.`);
                     process.exit();
                 });
