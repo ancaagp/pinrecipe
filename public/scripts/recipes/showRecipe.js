@@ -85,7 +85,7 @@ function renderAuthorizedNav() {
   logoutLi.setAttribute('class', 'nav-item nav justify-content-end mt-2');
   let logoutLink = document.createElement('a');
   logoutLink.setAttribute('href', '/login');
-  logoutLink.setAttribute('class', 'text-white');
+  logoutLink.setAttribute('class', 'text-white text-white font-weight-bold');
   logoutLink.setAttribute('id', 'logout');
   logoutLink.textContent = 'Log Out';
   logoutLi.appendChild(logoutLink);
@@ -134,8 +134,7 @@ function renderUnauthorizedNav() {
   navSection.appendChild(register);
 };
 
-
-
+//-----------------------RENDER MAIN PAGE-----------------------------------
 
 const API_BASE = '/api/v1';
 // Find photo placeholder
