@@ -43,3 +43,12 @@ a {
 a:hover {
     color: white;
 }
+
+#userProfile {
+
+}
+
+.successMsg {
+    color: red;
+    text-align: center;
+}
