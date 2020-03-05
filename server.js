@@ -294,7 +294,7 @@ app.post('/api/v1/users', (req, res) => {
 });
 
 // PUT a user by id
-app.put('/api/v1/users/:id', (req, res) => {
+app.put('/api/v1/user/:id', (req, res) => {
     db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedUser) => {
         if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
 

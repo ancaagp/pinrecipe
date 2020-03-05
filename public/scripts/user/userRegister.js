@@ -47,9 +47,8 @@ function handleRegister (event) {
             body: JSON.stringify(userData),
         })
 
-        // What we receive? -----------------------------------------------------------QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
         .then((res) => res.json())
-        // What we do next? -----------------------------------------------------------QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+        // res sends the error code, when we do .json we get the status and message with it
         .then((data) => {            
             if (data.status !== 400) {
                 window.location = '/login';

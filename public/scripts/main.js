@@ -8,7 +8,6 @@ fetch('/api/v1/verify')
     .then((data) => {        
         // Assign the data about currentUser to the variable
         currentUser = data.currentUser;
-        console.log(currentUser);
     
         // if currentUser exists (=== true), then set the information on the page
         if (currentUser) {
@@ -94,7 +93,6 @@ function renderAuthorizedNav() {
   logoutLink.textContent = 'Log Out';
   logoutLi.appendChild(logoutLink);
   linksUl.appendChild(logoutLi);
-
 
   navSection.appendChild(mainPage);
   navSection.appendChild(profile);
