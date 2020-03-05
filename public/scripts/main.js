@@ -124,3 +124,39 @@ postRecipe.addEventListener('submit', (event) => {
     })
     .catch((err) => console.log(err));
 });
+
+// --------------------- LOGOUT
+
+const logout = () => {
+    fetch('/api/v1/logout', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'credentials': 'include', 
+        },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.status === 200) {
+            window.location='/login';
+        }
+    });
+};
+
+const logoutBtn = document.getElementById("logout");
+
+logoutBtn.addEventListener("click", logout);
+
+// ------------------------ SHOW ADD RECIPE BUTTON IF USER IS LOGGED IN
+/*
+fetch('verify')
+passing data
+if data current user verify returns
+get add recipe element button
+style = invisible (hide it by default)
+if user exists show button
+
+
+*/
+
+
