@@ -29,8 +29,6 @@ function handleLogin(event) {
             if (data.status === 200) {
                 window.location = '/profile';
             }
-
-            console.log(data);
         })
         .catch((err) => console.log(err));
 };
