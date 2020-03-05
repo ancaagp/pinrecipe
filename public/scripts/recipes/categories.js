@@ -1,5 +1,113 @@
-// getting recipe container for adding the recipe card
-// console.log('NEW CATEGORIES');
+//------------------ Render the navbar ------------------
+let currentUser;
+
+fetch('/api/v1/verify')
+    .then((res) => res.json())
+    .then((data) => {        
+        // Assign the data about currentUser to the variable
+        currentUser = data.currentUser;
+        console.log(currentUser);
+        
+
+        // if currentUser exists (=== true), then set the information on the page
+        if (currentUser) {
+            renderAuthorizedNav();
+        } else {
+          renderUnauthorizedNav();
+        }
+    });
+
+function renderAuthorizedNav() {
+  let navSection = document.getElementById('authorized');
+
+  // MAIN PAGE section
+  let mainPage = document.createElement('h4');
+  mainPage.setAttribute('class', 'text-white nav justify-content-end mb-3');
+  let mainLink = document.createElement('a');
+  mainLink.setAttribute('href', '/');
+  mainLink.textContent = "Main Page";
+  mainPage.appendChild(mainLink);
+
+  // PROFILE section
+  let profile = document.createElement('h4');
+  profile.setAttribute('class', 'text-white nav justify-content-end mb-3');
+  let profileLink = document.createElement('a');
+  profileLink.setAttribute('href', '/profile');
+  profileLink.textContent = "Profile";
+  profile.appendChild(profileLink);
+
+
+  // CATEGORY LINKS
+  let linksUl = document.createElement('ul');
+
+  // Breakfast
+  linksUl.setAttribute('class', 'list-unstyled');
+  let breakfastLi = document.createElement('li');
+  breakfastLi.setAttribute('class', 'nav-item nav justify-content-end');
+  let breakfastLink = document.createElement('a');
+  breakfastLink.setAttribute('href', '/breakfast');
+  breakfastLink.setAttribute('class', 'text-white');
+  breakfastLink.textContent = 'Breakfast';
+  breakfastLi.appendChild(breakfastLink);
+  linksUl.appendChild(breakfastLi);
+
+  // Lunch
+  let lunchLi = document.createElement('li');
+  lunchLi.setAttribute('class', 'nav-item nav justify-content-end');
+  let lunchLink = document.createElement('a');
+  lunchLink.setAttribute('href', '/lunch');
+  lunchLink.setAttribute('class', 'text-white');
+  lunchLink.textContent = 'Lunch';
+  lunchLi.appendChild(lunchLink);
+  linksUl.appendChild(lunchLi);
+
+  //Dinner
+  let dinnerLi = document.createElement('li');
+  dinnerLi.setAttribute('class', 'nav-item nav justify-content-end');
+  let dinnerLink = document.createElement('a');
+  dinnerLink.setAttribute('href', '/dinner');
+  dinnerLink.setAttribute('class', 'text-white');
+  dinnerLink.textContent = 'Dinner';
+  dinnerLi.appendChild(dinnerLink);
+  linksUl.appendChild(dinnerLi);
+
+  //Dessert
+  let dessertLi = document.createElement('li');
+  dessertLi.setAttribute('class', 'nav-item nav justify-content-end');
+  let dessertLink = document.createElement('a');
+  dessertLink.setAttribute('href', '/dessert');
+  dessertLink.setAttribute('class', 'text-white');
+  dessertLink.textContent = 'Dessert';
+  dessertLi.appendChild(dessertLink);
+  linksUl.appendChild(dessertLi);
+
+  // Logout
+  let logoutLi = document.createElement('li');
+  logoutLi.setAttribute('class', 'nav-item nav justify-content-end mt-2');
+  let logoutLink = document.createElement('a');
+  logoutLink.setAttribute('href', '/login');
+  logoutLink.setAttribute('class', 'text-white');
+  logoutLink.setAttribute('id', 'logout');
+  logoutLink.textContent = 'Log Out';
+  logoutLi.appendChild(logoutLink);
+  linksUl.appendChild(logoutLi);
+
+
+  navSection.appendChild(mainPage);
+  navSection.appendChild(profile);
+  navSection.appendChild(linksUl);
+};
+
+
+// function renderUnauthorizedNav() {
+
+// }
+
+
+
+
+
+//------------------ Render the main section ------------------
 
 const card = document.querySelector('#recipe')
 const categorySelected = window.location.pathname.split('/')[1];
