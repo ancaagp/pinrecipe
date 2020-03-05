@@ -124,3 +124,18 @@ postRecipe.addEventListener('submit', (event) => {
     })
     .catch((err) => console.log(err));
 });
+
+// --------------------- LOGOUT
+
+// gets data of the current user from verify route
+let currentUser
+
+fetch('/api/v1/verify')
+.then((res) => res.json())
+.then((data) => {
+    currentUser = data.currentUser;
+});
+
+console.log(currentUser);
+
+
