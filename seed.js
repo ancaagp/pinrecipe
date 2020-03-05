@@ -8,12 +8,12 @@ const recipes = [
         description: "Use porcini and wild mushrooms to make this rich and creamy soup that makes a filling yet light supper for cold nights.",
         calories: 347,
         ingredients: [
-            "25g dried porcini", 
-            "50g butter", 
-            "1 onion", 
-            "1 garlic clove", 
-            "thyme", 
-            "400g mixed wild mushrooms",       
+            "25g dried porcini",
+            "50g butter",
+            "1 onion",
+            "1 garlic clove",
+            "thyme",
+            "400g mixed wild mushrooms",
             "850ml vegetable stock",
             "200ml tub crème fraîche",
             "truffle oil",
@@ -101,7 +101,7 @@ const recipes = [
     },
     {
         ingredients: ["1/2 cup raisins", "1/4 cup rum", "2 tbsp active dry yeast", "1/4 cup warm water", "2 cups milk", "1 cup butter unsalted", "3 tbsp lemon zest", "1 1/2 cups sugar", "8 cups all-purpose flour", "5 eggs separated", "2 tsp vanilla extract", "walnuts or pecans", "5 tbsp sugar", "2 tbsp cocoa powder", "2 tbsp vegetable oil", "1 egg beaten"],
-        category: (2) ["breakfast", "dessert"],
+        category: (2)["breakfast", "dessert"],
         name: "Walnut roll",
         description: "Sweet Walnut Roll known as “Cozonac cu Nuca” is a traditional Romanian sweet bread made with raisins and walnuts or pecans enjoyed at Christmas and Easter.",
         image: "https://www.jocooks.com/wp-content/uploads/2016/12/cozonac-cu-nuca-1-4.jpg",
@@ -153,21 +153,19 @@ db.Recipe.deleteMany({}, (err, result) => {
                 if (err) {
                     console.log(err);
                     process.exit();
-                } 
+                }
                 console.log(`Created ${newUsers.length} users.`);
-                process.exit();
-            });
 
-            console.log("Creating new recipes.");
-            db.Recipe.create(recipes, (err, newRecipes) => {
-                if (err) {
-                    console.log(err);
+                console.log("Creating new recipes.");
+                db.Recipe.create(recipes, (err, newRecipes) => {
+                    if (err) {
+                        console.log(err);
+                        process.exit();
+                    }
+                    console.log(`Created ${newRecipes.length} recipes.`);
                     process.exit();
-                } 
-                console.log(`Created ${newRecipes.length} recipes.`);
-                process.exit();
+                });
             });
         });
     });
 });
-  
