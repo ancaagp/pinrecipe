@@ -247,6 +247,9 @@ function getRecipeCard(recipe) {
 
 
 const logout = () => {
+   //Remove currentUser data from localStorage
+   localStorage.removeItem("currentUser");
+
   fetch('/api/v1/logout', {
       method: 'DELETE',
       headers: {
