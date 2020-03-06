@@ -25,6 +25,8 @@ function handleLogin(event) {
         .then((res) => res.json())
         .then((data) => {
             if (data.status === 200) {
+                // storing userId in local storage, coming from login route
+                localStorage.setItem("userId", data.userId);
                 window.location = '/profile';
             }
         })

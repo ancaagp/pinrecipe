@@ -51,7 +51,8 @@ function handleRegister (event) {
         // res sends the error code, when we do .json we get the status and message with it
         .then((data) => {            
             if (data.status !== 400) {
-                window.location = '/login';
+                localStorage.setItem("userId", data.userId);
+                window.location = '/profile';
             } else {
                 // if we are here - we have a user with existing email
                 handleRegisteredEmail();
