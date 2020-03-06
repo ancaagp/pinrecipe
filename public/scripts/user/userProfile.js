@@ -1,6 +1,7 @@
 // If user is in the localStorage - take it
 let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
+
 let logoutBtn;
 let userUpdated;
 
@@ -95,21 +96,28 @@ const deleteUserBtn = document.getElementById("deleteProfile");
 
 
 deleteUserBtn.addEventListener('click', (event) => {
-    const firstName = document.getElementById("firstName");
-    const lastName = document.getElementById("lastName");
-    const email = document.getElementById("email");
-    user = {firstName: firstName.value, lastName: lastName.value, email: email.value};
-
-    console.log(user);
-
-    fetch(`/api/v1/users/${user._id}`, {
+    let userId = localStorage.getItem('userId');
+    fetch(`/api/v1/users/${userId}`, {
         method: 'DELETE',
     })
-    .then((stream) => stream.json())
-    .then((res) => {
-        console.log(res);
-    })
-
+        .then((stream) => stream.json())
+        .then((res) => {
+            if (res.status === 200) {
+                // cleans local storage of user data
+                localStorage.removeItem("currentUser");
+                localStorage.removeItem("UserId");
+            }
+            // grabs the modal and shows it on Delete button click
+            $('#deleteUserMsg').show();
+        })
+        .catch((err) => console.log(err));
 })
+
+// sends the user to homescreen when clicking Close on modal
+$('#modalClose').on('click', function() {
+    window.location='/';
+});
+
+
 
 
