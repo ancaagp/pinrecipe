@@ -395,7 +395,7 @@ app.post('/api/v1/login', (req, res) => {
 
 
 app.get('/api/v1/verify', (req, res) => {
-    if (req.session.currentUser) {
+    if (req.session.currentUser) {                
         return res.json({
             status: 200,
             message: 'Authorized',
