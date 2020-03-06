@@ -12,7 +12,6 @@ fetch('/api/v1/verify')
         if (!currentUser) {
             currentUser = data.currentUser;
         };
-
         renderData(currentUser);
     });
 
@@ -49,6 +48,7 @@ function renderData(currentUser) {
     lastName.value = currentUser.lastName;
     email.value = currentUser.email;
 };
+
 // -------------------- Update user profile
 
 const updateProfileBtn = document.getElementById("updateProfile");
@@ -62,7 +62,7 @@ updateProfileBtn.addEventListener('click', (event) => {
     // Save updated user to localStorage for being able to display changes on front-end
     localStorage.setItem("currentUser", JSON.stringify(userUpdated));
     
-    fetch(`/api/v1/user/${currentUser._id}`, {
+    fetch(`/api/v1/users/${currentUser._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -88,3 +88,28 @@ const showMsg = () => {
     `);
     };
 }
+
+// -------------------------- DELETE USER PROFILE
+
+const deleteUserBtn = document.getElementById("deleteProfile");
+
+
+deleteUserBtn.addEventListener('click', (event) => {
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    user = {firstName: firstName.value, lastName: lastName.value, email: email.value};
+
+    console.log(user);
+
+    fetch(`/api/v1/users/${user._id}`, {
+        method: 'DELETE',
+    })
+    .then((stream) => stream.json())
+    .then((res) => {
+        console.log(res);
+    })
+
+})
+
+
