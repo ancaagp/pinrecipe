@@ -43,6 +43,7 @@ Thanks to our instructors:
 
 
 - Easy to share link of favorite recipe with friends
+![Pinrecipe](assets/share.png)
 
 ## Planned Features
 - Logged in users will have their own recipe board where they can add, update and delete their own recipes
