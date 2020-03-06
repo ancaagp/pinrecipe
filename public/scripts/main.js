@@ -2,7 +2,6 @@
 let currentUser;
 let logoutBtn;
 
-
 fetch('/api/v1/verify')
     .then((res) => res.json())
     .then((data) => {        

@@ -1,40 +1,19 @@
-// currentUser is undefined. It is just a placeholder
-let currentUser;
+// If user is in the localStorage - take it
+let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
 let logoutBtn;
 let userUpdated;
-
 
 // Get information if currentUser exists = someone is logged in.
 fetch('/api/v1/verify')
     .then((res) => res.json())
     .then((data) => {        
-        // Assign the data about currentUser to the variable
-        currentUser = data.currentUser;
-
-        // if currentUser exists (=== true), then set the information on the page
-        if (currentUser) {
-            renderData(currentUser)
+        // if we don't have a currentUser in localStorage - use one from session
+        if (!currentUser) {
+            currentUser = data.currentUser;
         };
+        renderData(currentUser);
     });
-
-// Fill user's fields with the information 
-function renderData(currentUser) { 
-    // if (userUpdated) {
-    //     currentUser = userUpdated;
-    // };
-
-    logoutBtn = document.getElementById('logout');
-    logoutBtn.addEventListener("click", logout);
-    console.log(currentUser);
-      
-    const firstName = document.getElementById('firstName'); 
-    const lastName = document.getElementById('lastName'); 
-    const email = document.getElementById('email'); 
-
-    firstName.value = currentUser.firstName;
-    lastName.value = currentUser.lastName;
-    email.value = currentUser.email;
-};
 
 
 const logout = () => {
@@ -51,9 +30,26 @@ const logout = () => {
             window.location='/';
         }
     });
+
+    // Remove currentUser from localStorage
+    localStorage.removeItem("currentUser");
 };
 
-// -------------------- UPDATE USER PROFILE
+// Fill user's fields with the information 
+function renderData(currentUser) { 
+    logoutBtn = document.getElementById('logout');
+    logoutBtn.addEventListener("click", logout);
+
+    const firstName = document.getElementById('firstName'); 
+    const lastName = document.getElementById('lastName'); 
+    const email = document.getElementById('email'); 
+
+    firstName.value = currentUser.firstName;
+    lastName.value = currentUser.lastName;
+    email.value = currentUser.email;
+};
+
+// -------------------- Update user profile
 
 const updateProfileBtn = document.getElementById("updateProfile");
 
@@ -63,8 +59,8 @@ updateProfileBtn.addEventListener('click', (event) => {
     const email = document.getElementById("email");
     userUpdated = {firstName: firstName.value, lastName: lastName.value, email: email.value};
 
-    console.log(userUpdated);
-    console.log(currentUser._id);
+    // Save updated user to localStorage for being able to display changes on front-end
+    localStorage.setItem("currentUser", JSON.stringify(userUpdated));
     
     fetch(`/api/v1/users/${currentUser._id}`, {
         method: 'PUT',
