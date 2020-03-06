@@ -6,7 +6,6 @@ fetch('/api/v1/verify')
     .then((data) => {        
         // Assign the data about currentUser to the variable
         currentUser = data.currentUser;
-        console.log(currentUser);
     
         // if currentUser exists (=== true), then set the information on the page
         if (currentUser) {
@@ -169,7 +168,6 @@ function renderBreakfast(recipesArray) {
   categoryDescription.textContent = "Best ideas for your breakfast"
 
   const recipeTemplate = recipesArray.map((recipe) => {
-    console.log(recipe);
 
     if (recipe.category.indexOf('Breakfast') !== -1) {
       return getRecipeCard(recipe);
@@ -198,8 +196,6 @@ function renderDinner(recipesArray) {
   categoryDescription.textContent = "Best ideas for your dinner"
 
   const recipeTemplate = recipesArray.map((recipe) => {
-    console.log(recipe);
-
     if (recipe.category.indexOf('Dinner') !== -1) {
       return getRecipeCard(recipe);
     };
@@ -214,7 +210,6 @@ function renderDessert(recipesArray) {
   categoryDescription.textContent = "Best ideas for your dessert"
 
   const recipeTemplate = recipesArray.map((recipe) => {
-    console.log(recipe);
 
     if (recipe.category.indexOf('Dessert') !== -1) {
       return getRecipeCard(recipe);

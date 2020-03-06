@@ -65,7 +65,6 @@ function handleRegister (event) {
 // Select email input and display alert message 
 function handleRegisteredEmail() {
     let emailInput = document.getElementById('inputEmail');
-    console.log(emailInput);
     emailInput.classList.add('is-invalid');
     emailInput.insertAdjacentHTML('afterend', `
         <div class="invalid-feedback">
