@@ -5,9 +5,7 @@ fetch('/api/v1/verify')
     .then((res) => res.json())
     .then((data) => {        
         // Assign the data about currentUser to the variable
-        currentUser = data.currentUser;
-        console.log(currentUser);
-    
+        currentUser = data.currentUser;    
         // if currentUser exists (=== true), then set the information on the page
         if (currentUser) {
             renderAuthorizedNav();
@@ -162,9 +160,7 @@ getRecipe();
 //-------------------------------------------------------------------------------- RENDER PAGE
 
 // Render the page
-function render(recipeObj) {
-    console.log(recipeObj);
-    
+function render(recipeObj) {    
     setPhotoColumn(recipeObj);
     setIngredients(recipeObj.ingredients);
     setDescription(recipeObj.description);
@@ -181,7 +177,7 @@ function setPhotoColumn(recipeObj) {
     caloriesPlaceholder.textContent = `Calories: ${recipeObj.calories}`
 
     // Generates a message to share with friends
-    let shareMessage = `Look! I found an awesome recipe ${window.location.pathname}`;
+    let shareMessage = `Look! I found an awesome recipe! ${window.location}`;
 
     // Put it on the page
     popoverPlaceholder.setAttribute('data-content', shareMessage);

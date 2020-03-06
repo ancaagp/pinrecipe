@@ -140,6 +140,7 @@
 
               <!-- FORM BUTTON -->
               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button class="btn btn-primary">Add recipe</button>
               </div>
 
@@ -150,25 +151,6 @@
 </div>
 
 
-<!-- BOOTSTRAP ALBUM -->
-  <!-- <header>
-    <div class="collapse bg-dark" id="navbarHeader">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-sm-8 col-md-7 py-4">
-            <h4 class="text-white"></h4>
-            <p class="text-muted"></p>
-          </div>
-
-          <div class="col-sm-4 offset-md-1 py-4">
-            <h4 class="text-white">Contact</h4>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-white">Follow on Twitter</a></li>
-              <li><a href="#" class="text-white">Like on Facebook</a></li>
-              <li><a href="#" class="text-white">Email me</a></li>
-            </ul> -->
-
   <main role="main">
     <!-- HERO SECTION -->
     <section class="jumbotron text-center">
@@ -176,38 +158,21 @@
         <h1>Pinrecipe</h1>
         <p class="lead text-muted">Pinrecipe is your cookbook. Browse for yummy inspiration and add your own recipes.
         </p>
-        <p>
-        <!-- OLD BUTTON:  <a href="#" class="btn btn-secondary my-2">Add new recipe</a> -->
+
+         <!-- TOOLTIP FOR ADD RECIPE BUTTON -->
+        <span id="tooltip" class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Please login to add new recipes">
+
         <!-- modal button -->
-        <button type="button" class="btn btn-secondary my-2" data-toggle="modal" data-target="#exampleModal">Add new recipe</button>
-        </p>
+        <button id="addRecipeBtn" type="button" class="btn btn-secondary my-2" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip">Add new recipe</button>
+        </span>
       </div>
     </section>
+
 
     <!-- RECIPE CARDS SECTION -->
     <div class="album py-5 bg-light">
       <div class="container">
         <div id="recipe" class="row">
-
-          <!-- RECIPE CARD--->
-
-          <!-- <div class="col-md-3">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--458510_12.jpg?itok=EF_1bnMj"></img>
-              <div class="card-body">
-                <p class="card-text">Creamy mushroom soup</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">350 Cal/ 50 mins</small>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>  -->
-
         </div>
       </div>
     </div>

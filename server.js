@@ -305,9 +305,16 @@ app.put('/api/v1/users/:id', (req, res) => {
 // DELETE a user by id
 app.delete('/api/v1/users/:id', (req, res) => {
     db.User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
-        if (err) return res.status(404).json({ status: 404, error: 'Cannot find users.' });
+        if (err) return res.status(404).json({ status: 404, error: 'Cannot find user.' });
 
-        res.json(deletedUser);
+        // when deleting user, we also log him out
+        req.session.destroy((err) => {
+            if (err) return res.status(400).json({
+                status: 400,
+                error: "Something went wrong, please try again."
+            });
+            res.json({status: 200, message: `User deleted, ${deletedUser.email}`});
+        });
     });
 });
 
@@ -348,10 +355,20 @@ app.post('/api/v1/register', (req, res) => {
                         status: 400,
                         message: "Something went wrong, please try again",
                     });
-                    res.status(201).json({
-                        status: 201,
-                        message: "Success",
-                    });
+
+                    // Creating session for the user, so we can log him in after registering
+                    const currentUser = {
+                        _id: createdUser._id,
+                        firstName: createdUser.firstName,
+                        lastName: createdUser.lastName,
+                        email: createdUser.email
+                    };
+    
+                    // Create a new session
+                    req.session.currentUser = currentUser;
+    
+                    // Respond
+                    res.status(200).json({ status: 200, message: "Success!", userId: currentUser._id});
                 });
             });
         });
@@ -385,7 +402,7 @@ app.post('/api/v1/login', (req, res) => {
                 req.session.currentUser = currentUser;
 
                 // Respond
-                res.status(200).json({ status: 200, message: "Success!" });
+                res.status(200).json({ status: 200, message: "Success!", userId: currentUser._id});
             } else {
                 res.status(401).json({ status: 401, error: "Unauthorized, please try again" });
             }
@@ -395,7 +412,7 @@ app.post('/api/v1/login', (req, res) => {
 
 
 app.get('/api/v1/verify', (req, res) => {
-    if (req.session.currentUser) {
+    if (req.session.currentUser) {                
         return res.json({
             status: 200,
             message: 'Authorized',

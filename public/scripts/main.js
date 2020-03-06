@@ -2,13 +2,11 @@
 let currentUser;
 let logoutBtn;
 
-
 fetch('/api/v1/verify')
     .then((res) => res.json())
     .then((data) => {        
         // Assign the data about currentUser to the variable
         currentUser = data.currentUser;
-        console.log(currentUser);
     
         // if currentUser exists (=== true), then set the information on the page
         if (currentUser) {
@@ -94,7 +92,6 @@ function renderAuthorizedNav() {
   logoutLink.textContent = 'Log Out';
   logoutLi.appendChild(logoutLink);
   linksUl.appendChild(logoutLi);
-
 
   navSection.appendChild(mainPage);
   navSection.appendChild(profile);
@@ -281,16 +278,26 @@ const logout = () => {
     });
 };
 
-// ------------------------ SHOW ADD RECIPE BUTTON IF USER IS LOGGED IN
-/*
-fetch('verify')
-passing data
-if data current user verify returns
-get add recipe element button
-style = invisible (hide it by default)
-if user exists show button
+
+// ------------------------ SHOW ADD RECIPE BUTTON ONLY IF USER IS LOGGED IN
 
 
-*/
+fetch('/api/v1/verify')
+    .then((res) => res.json())
+    .then((data) => {        
+        // Assign the data about currentUser to the variable
+        currentUser = data.currentUser;
+        const addRecipeBtn = document.getElementById("addRecipeBtn");
+    
+        // if currentUser exists (=== true), then set the information on the page
+        if (currentUser) {
+            addRecipeBtn.disabled = false;
+        } else {
+            // Disables the button when user is logged out
+            addRecipeBtn.disabled = true;
+            // Adds tooltip to the button
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    });
 
 

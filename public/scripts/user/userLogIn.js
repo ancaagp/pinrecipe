@@ -1,5 +1,3 @@
-console.log('LogIn test');
-
 // Select the form
 const loginForm = document.getElementById('login-form');
 
@@ -13,7 +11,7 @@ function handleLogin(event) {
     const formInputs = [...loginForm.elements];
     formInputs.forEach((input) => {
         userData[input.name] = input.value;
-        input.value = "";
+        // input.value = "";
     });
 
     fetch('/api/v1/login', {
@@ -27,10 +25,10 @@ function handleLogin(event) {
         .then((res) => res.json())
         .then((data) => {
             if (data.status === 200) {
+                // storing userId in local storage, coming from login route
+                localStorage.setItem("userId", data.userId);
                 window.location = '/profile';
             }
-
-            console.log(data);
         })
         .catch((err) => console.log(err));
 };
