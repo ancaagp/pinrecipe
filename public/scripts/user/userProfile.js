@@ -2,7 +2,7 @@
 let currentUser;
 let logoutBtn;
 let userUpdated;
-console.log(userUpdated);
+
 
 // Get information if currentUser exists = someone is logged in.
 fetch('/api/v1/verify')
@@ -17,12 +17,11 @@ fetch('/api/v1/verify')
         };
     });
 
-
 // Fill user's fields with the information 
 function renderData(currentUser) { 
-    if (userUpdated) {
-        currentUser = userUpdated;
-    };
+    // if (userUpdated) {
+    //     currentUser = userUpdated;
+    // };
 
     logoutBtn = document.getElementById('logout');
     logoutBtn.addEventListener("click", logout);
@@ -54,7 +53,7 @@ const logout = () => {
     });
 };
 
-// -------------------- Update user profile
+// -------------------- UPDATE USER PROFILE
 
 const updateProfileBtn = document.getElementById("updateProfile");
 
@@ -67,7 +66,7 @@ updateProfileBtn.addEventListener('click', (event) => {
     console.log(userUpdated);
     console.log(currentUser._id);
     
-    fetch(`/api/v1/user/${currentUser._id}`, {
+    fetch(`/api/v1/users/${currentUser._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -93,3 +92,28 @@ const showMsg = () => {
     `);
     };
 }
+
+// -------------------------- DELETE USER PROFILE
+
+const deleteUserBtn = document.getElementById("deleteProfile");
+
+
+deleteUserBtn.addEventListener('click', (event) => {
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    user = {firstName: firstName.value, lastName: lastName.value, email: email.value};
+
+    console.log(user);
+
+    fetch(`/api/v1/users/${user._id}`, {
+        method: 'DELETE',
+    })
+    .then((stream) => stream.json())
+    .then((res) => {
+        console.log(res);
+    })
+
+})
+
+
