@@ -38,7 +38,6 @@ function handleRegister (event) {
 
     if (formIsValid) {
         // submits user data to server
-        console.log('Submitting user data --> userData')
         fetch('/api/v1/register', {
             method: 'POST',
             headers: {
