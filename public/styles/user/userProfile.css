@@ -44,11 +44,18 @@ a:hover {
     color: white;
 }
 
-#userProfile {
-
+#deleteUserMsg {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    margin-left: -150px;
+    margin-top: -150px;
 }
 
 .successMsg {
     color: red;
     text-align: center;
 }
+
