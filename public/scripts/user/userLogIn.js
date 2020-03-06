@@ -1,5 +1,3 @@
-console.log('LogIn test');
-
 // Select the form
 const loginForm = document.getElementById('login-form');
 
